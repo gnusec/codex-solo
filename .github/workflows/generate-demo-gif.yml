@@ -1,0 +1,51 @@
+name: Generate Demo GIF
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - assets/demo.svg
+      - .github/workflows/generate-demo-gif.yml
+
+permissions:
+  contents: write
+
+jobs:
+  build-gif:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y imagemagick librsvg2-bin fonts-dejavu-core
+      - name: Render frames from SVG
+        run: |
+          set -euo pipefail
+          mkdir -p .work
+          rsvg-convert -w 1040 -h 360 assets/demo.svg -o .work/frame1.png
+          cp .work/frame1.png .work/frame2.png
+          # Slightly annotate frame2 to simulate progress
+          convert .work/frame2.png -gravity South -fill '#c9d1d9' -pointsize 16 -annotate +0+14 '… auto-continue → success' .work/frame2.png
+      - name: Assemble GIF
+        run: |
+          set -euo pipefail
+          mkdir -p assets
+          convert -loop 0 -delay 100 .work/frame1.png -delay 80 .work/frame2.png assets/tui-demo.gif
+          identify assets/tui-demo.gif || true
+      - name: Commit GIF if changed
+        run: |
+          set -euo pipefail
+          if git status --porcelain -- assets/tui-demo.gif | grep -q '^ M\|^??'; then
+            git config user.name 'github-actions'
+            git config user.email 'github-actions@users.noreply.github.com'
+            git add assets/tui-demo.gif
+            git commit -m 'docs(demo): auto-generate GIF from demo.svg [skip ci]'
+            git push
+          else
+            echo 'No changes to GIF.'
+          fi
+
