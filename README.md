@@ -1,5 +1,12 @@
 入群 / Discussions: https://github.com/gnusec/codex-solo/discussions
 
+语言 / Languages:
+- 简体中文 (当前)
+- English: docs/README.en.md
+- Español: docs/README.es.md
+- العربية: docs/README.ar.md
+- हिन्दी: docs/README.hi.md
+
 # Codex SOLO Mode (vendored)
 
 一个极简 README，去掉花哨 ASCII。SOLO 会自动连续工作，直到“成功检查”通过。
@@ -42,4 +49,3 @@
 
 ## License
 见 `LICENSE`
-
