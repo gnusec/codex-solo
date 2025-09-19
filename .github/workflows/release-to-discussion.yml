@@ -1,0 +1,52 @@
+name: Announce Release in Discussions
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  discussions: write
+
+jobs:
+  announce:
+    runs-on: ubuntu-latest
+    env:
+      DISCUSSION_NUMBER: "8"  # Pinned welcome thread to receive release updates
+    steps:
+      - name: Compose message from release payload
+        id: compose
+        run: |
+          set -euo pipefail
+          TAG=$(jq -r '.release.tag_name' "$GITHUB_EVENT_PATH")
+          URL=$(jq -r '.release.html_url' "$GITHUB_EVENT_PATH")
+          ASSETS=$(jq -r '.release.assets[]?.name' "$GITHUB_EVENT_PATH" || true)
+          {
+            echo "发布成功: $TAG"
+            echo "$URL"
+            echo
+            echo "文件列表:" 
+            if [ -n "$ASSETS" ]; then
+              printf '%s\n' "$ASSETS" | sed 's/^/- /'
+            else
+              echo "- (无资产或由后续任务上传)"
+            fi
+          } > body.txt
+          BODY_JSON=$(jq -Rn --slurpfile b body.txt '{body:($b[0]|tostring)}')
+          echo "body_json=$BODY_JSON" >> $GITHUB_OUTPUT
+
+      - name: Post comment to Discussions
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          OWNER=$(echo "$GITHUB_REPOSITORY" | cut -d/ -f1)
+          REPO=$(echo "$GITHUB_REPOSITORY" | cut -d/ -f2)
+          API="https://api.github.com"
+          curl -sS -X POST \
+            -H "Authorization: token $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -d '${{ steps.compose.outputs.body_json }}' \
+            "$API/repos/$OWNER/$REPO/discussions/$DISCUSSION_NUMBER/comments" \
+            >/dev/null
+
