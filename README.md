@@ -74,6 +74,16 @@ Slogan：独闯天涯，凭证为王；不靠嘴，靠退出码。
     "interval_seconds": 30
   }
   ```
+- 测试驱动（Node.js / Jest 示例）
+  ```json
+  {
+    "kickoff_prompt": "完善实现并让 Jest 测试通过",
+    "success_cmd": ["npm", "test", "--silent"],
+    "continue_prompt": "继续（直到所有测试通过）",
+    "exit_on_success": true,
+    "interval_seconds": 30
+  }
+  ```
 - 文档构建/发布门禁（MkDocs 示例）
   ```json
   {
@@ -89,6 +99,15 @@ Slogan：独闯天涯，凭证为王；不靠嘴，靠退出码。
     "kickoff_prompt": "修复警告并通过测试",
     "success_sh": "cargo clippy -- -D warnings && cargo fmt -- --check && cargo test -q",
     "continue_prompt": "继续（直到无警告且测试通过）",
+    "exit_on_success": true
+  }
+  ```
+- 测试驱动（Go 示例）
+  ```json
+  {
+    "kickoff_prompt": "补全实现并通过 go test",
+    "success_sh": "go test ./... -count=1 >/dev/null",
+    "continue_prompt": "继续（直到所有包测试通过）",
     "exit_on_success": true
   }
   ```
