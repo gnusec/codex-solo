@@ -1,15 +1,22 @@
-![Codex SOLO](assets/banner.svg)
+快速入口
+- 发布下载（最新）：https://github.com/gnusec/codex-solo/releases
+- 入群 / Discussions：https://github.com/gnusec/codex-solo/discussions
+- 贡献（Contribute）：[CONTRIBUTING.md](CONTRIBUTING.md)
+- 路线图（Roadmap）：[docs/ROADMAP.md](docs/ROADMAP.md)
+- Good First Issues：https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
+- Help Wanted：https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
 
-发布下载（最新）：https://github.com/gnusec/codex-solo/releases · 入群 / Discussions：https://github.com/gnusec/codex-solo/discussions · 贡献（Contribute）：[CONTRIBUTING.md](CONTRIBUTING.md) · 路线图（Roadmap）：[docs/ROADMAP.md](docs/ROADMAP.md) · Good First Issues：https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22 · Help Wanted：https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
-
-语言 / Languages： [简体中文](docs/README.zh-CN.md) · [English](docs/README.en.md) · [Español](docs/README.es.md) · [العربية](docs/README.ar.md) · [हिन्दी](docs/README.hi.md)
-Show & Tell（演示与成果）：https://github.com/gnusec/codex-solo/discussions/9
+语言 / Languages
+- [简体中文](docs/README.zh-CN.md) · [English](docs/README.en.md) · [Español](docs/README.es.md) · [العربية](docs/README.ar.md) · [हिन्दी](docs/README.hi.md)
+- Show & Tell（演示与成果）：https://github.com/gnusec/codex-solo/discussions/9
 
 [![Release](https://img.shields.io/github/v/release/gnusec/codex-solo?display_name=tag)](https://github.com/gnusec/codex-solo/releases)
 [![CI](https://github.com/gnusec/codex-solo/actions/workflows/release.yml/badge.svg)](https://github.com/gnusec/codex-solo/actions)
 [![Downloads](https://img.shields.io/github/downloads/gnusec/codex-solo/total)](https://github.com/gnusec/codex-solo/releases)
 [![Stars](https://img.shields.io/github/stars/gnusec/codex-solo?style=social)](https://github.com/gnusec/codex-solo/stargazers)
 [![License](https://img.shields.io/github/license/gnusec/codex-solo)](LICENSE)
+
+![Codex SOLO](assets/banner.svg)
 
 # Codex SOLO
 
@@ -19,8 +26,7 @@ Slogan：独闯天涯，凭证为王；不靠嘴，靠退出码。
 ## Quick Demo
 ![TUI Demo (GIF)](assets/tui-demo.gif)
 
-静态备选（若 GIF 未显示）：
-![TUI Demo (static)](assets/demo.svg)
+静态备选（若 GIF 未显示）：[assets/demo.svg](assets/demo.svg)
 
 ## Quick Start
 - 构建：`cd vendor/codex/codex-rs && cargo build -p codex-cli --release`
