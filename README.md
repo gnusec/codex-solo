@@ -12,7 +12,10 @@ Slogan：独闯天涯，凭证为王；不靠嘴，靠退出码。
 作用：自动连击执行，直到“成功检查”以 0 退出码通过，才算完成。
 
 ## Quick Demo
-![TUI Demo](assets/demo.svg)
+![TUI Demo (GIF)](assets/tui-demo.gif)
+
+静态备选（若 GIF 未显示）：
+![TUI Demo (static)](assets/demo.svg)
 
 ## Quick Start
 - 构建：`cd vendor/codex/codex-rs && cargo build -p codex-cli --release`
@@ -51,6 +54,8 @@ Slogan：独闯天涯，凭证为王；不靠嘴，靠退出码。
 - 深入原理：
   [SOLO.en.md](docs/SOLO.en.md) · [SOLO.zh-CN.md](docs/SOLO.zh-CN.md) · [SOLO.es.md](docs/SOLO.es.md) · [SOLO.ar.md](docs/SOLO.ar.md) · [SOLO.hi.md](docs/SOLO.hi.md)
 - 路线图：[docs/ROADMAP.md](docs/ROADMAP.md)
+
+录制与更新演示（可选）：[docs/DEMO_CAPTURE.md](docs/DEMO_CAPTURE.md)
 
 ## 常见场景（Common Scenarios）
 - 测试驱动（Python 示例）
