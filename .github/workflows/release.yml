@@ -2,6 +2,7 @@ name: Release
 
 permissions:
   contents: write
+  discussions: write
 
 on:
   push:
@@ -181,3 +182,32 @@ jobs:
             dist/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Comment on pinned Discussions with assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DISCUSSION_NUMBER: 8
+        run: |
+          set -euo pipefail
+          TAG="${GITHUB_REF_NAME}"
+          URL="https://github.com/${GITHUB_REPOSITORY}/releases/tag/${TAG}"
+          ASSETS=$(ls -1 dist | sed 's/^/- /' || true)
+          {
+            echo "发布成功: ${TAG}"
+            echo "${URL}"
+            echo
+            echo "文件列表:"
+            if [ -n "${ASSETS}" ]; then echo "${ASSETS}"; else echo "- 无"; fi
+          } > body.txt
+          BODY=$(jq -Rs '.' < body.txt)
+          # Fetch discussion id via GraphQL then comment
+          API=https://api.github.com/graphql
+          OWNER=$(echo "$GITHUB_REPOSITORY" | cut -d/ -f1)
+          REPO=$(echo "$GITHUB_REPOSITORY" | cut -d/ -f2)
+          Q1=$(jq -c -n --arg o "$OWNER" --arg r "$REPO" --argjson n "$DISCUSSION_NUMBER" '{query:"query($o:String!,$r:String!,$n:Int!){repository(owner:$o,name:$r){discussion(number:$n){id}}}",variables:{o:$o,r:$r,n:$n}}')
+          R1=$(curl -sS -H "Authorization: bearer $GH_TOKEN" -H "Content-Type: application/json" -d "$Q1" "$API")
+          DID=$(printf '%s' "$R1" | sed -n 's/.*"id"\s*:\s*"\([^"]\+\)".*/\1/p' | head -n1)
+          if [ -n "$DID" ]; then
+            Q2=$(jq -c -n --arg id "$DID" --arg b "$BODY" '{query:"mutation($id:ID!,$b:String!){addDiscussionComment(input:{discussionId:$id,body:$b}){comment{id}}}",variables:{id:$id,b:$b}}')
+            curl -sS -H "Authorization: bearer $GH_TOKEN" -H "Content-Type: application/json" -d "$Q2" "$API" >/dev/null || true
+          fi
