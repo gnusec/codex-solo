@@ -68,14 +68,57 @@ jobs:
             -colors 128 -dither FloydSteinberg -layers Optimize \
             assets/tui-demo.gif
           identify assets/tui-demo.gif || true
-      - name: Commit GIF if changed
+
+      - name: Render frames (real typing alt)
         run: |
           set -euo pipefail
-          if git status --porcelain -- assets/tui-demo.gif | grep -q '^ M\|^??'; then
+          FONT="DejaVu-Sans-Mono"
+          BASE=.work/base.png
+          mkdir -p .work/real
+          # Create typing effect frames (subset for size)
+          convert "$BASE" -gravity NorthWest -font "$FONT" -pointsize 18 -fill '#58a6ff' -annotate +40+70 '$ codex' .work/real/r1.png
+          convert .work/real/r1.png -fill '#c9d1d9' -annotate +40+100 '/s' .work/real/r2.png
+          convert .work/real/r2.png -annotate +52+100 '/so' .work/real/r3.png
+          convert .work/real/r3.png -annotate +64+100 '/sol' .work/real/r4.png
+          convert .work/real/r4.png -annotate +76+100 '/solo' .work/real/r5.png
+          convert "$BASE" -gravity NorthWest -font "$FONT" -pointsize 18 \
+            -fill '#58a6ff' -annotate +40+70 '$ codex' \
+            -fill '#c9d1d9' -annotate +40+100 '/solo enabled ✓   interval=30s   exit_on_success=true' \
+            .work/real/r6.png
+          convert "$BASE" -gravity NorthWest -font "$FONT" -pointsize 18 \
+            -fill '#c9d1d9' -annotate +40+100 'success_cmd: pytest -q' \
+            -fill '#d29922' -annotate +300+100 '→ exit=1' \
+            .work/real/r7.png
+          convert "$BASE" -gravity NorthWest -font "$FONT" -pointsize 18 \
+            -fill '#c9d1d9' -annotate +40+100 'success_cmd: pytest -q' \
+            -fill '#3fb950' -annotate +300+100 '→ exit=0' \
+            -fill '#3fb950' -annotate +40+130 'SUCCESS proof: exit code 0 — exiting' \
+            .work/real/r8.png
+
+      - name: Assemble real typing GIF (alt)
+        run: |
+          set -euo pipefail
+          convert \
+            -loop 0 \
+            -delay 60  .work/real/r1.png \
+            -delay 60  .work/real/r2.png \
+            -delay 60  .work/real/r3.png \
+            -delay 60  .work/real/r4.png \
+            -delay 100 .work/real/r5.png \
+            -delay 120 .work/real/r6.png \
+            -delay 90  .work/real/r7.png \
+            -delay 140 .work/real/r8.png \
+            -colors 128 -dither FloydSteinberg -layers Optimize \
+            assets/tui-demo-real.gif
+          identify assets/tui-demo-real.gif || true
+      - name: Commit GIFs if changed
+        run: |
+          set -euo pipefail
+          if git status --porcelain -- assets/tui-demo.gif assets/tui-demo-real.gif | grep -q '^ M\|^??'; then
             git config user.name 'github-actions'
             git config user.email 'github-actions@users.noreply.github.com'
-            git add assets/tui-demo.gif
-            git commit -m 'docs(demo): auto-generate GIF from demo.svg [skip ci]'
+            git add assets/tui-demo.gif assets/tui-demo-real.gif
+            git commit -m 'docs(demo): auto-generate GIFs (simple + real-typing) [skip ci]'
             git push
           else
             echo 'No changes to GIF.'
