@@ -2,8 +2,13 @@
 
 # Codex SOLO
 
-Slogan：独闯天涯，凭证为王；不靠嘴，靠退出码。
-作用：自动连击执行，直到“成功检查”以 0 退出码通过，才算完成。
+功能概述：自动连续推进，直到“成功检查”通过。成功检查可脚本化（命令/脚本返回 0、测试全绿、文件/输出匹配等）；支持自启动、轮询间隔、成功后退出、多实例配置。
+
+[![Release](https://img.shields.io/github/v/release/gnusec/codex-solo?display_name=tag)](https://github.com/gnusec/codex-solo/releases)
+[![CI](https://github.com/gnusec/codex-solo/actions/workflows/release.yml/badge.svg)](https://github.com/gnusec/codex-solo/actions)
+[![Downloads](https://img.shields.io/github/downloads/gnusec/codex-solo/total)](https://github.com/gnusec/codex-solo/releases)
+[![Stars](https://img.shields.io/github/stars/gnusec/codex-solo?style=social)](https://github.com/gnusec/codex-solo/stargazers)
+[![License](https://img.shields.io/github/license/gnusec/codex-solo)](LICENSE)
 
 快速入口
 - 发布下载（最新）：https://github.com/gnusec/codex-solo/releases
@@ -16,12 +21,6 @@ Slogan：独闯天涯，凭证为王；不靠嘴，靠退出码。
 语言 / Languages
 - [简体中文](docs/README.zh-CN.md) · [English](docs/README.en.md) · [Español](docs/README.es.md) · [العربية](docs/README.ar.md) · [हिन्दी](docs/README.hi.md)
 - Show & Tell（演示与成果）：https://github.com/gnusec/codex-solo/discussions/9
-
-[![Release](https://img.shields.io/github/v/release/gnusec/codex-solo?display_name=tag)](https://github.com/gnusec/codex-solo/releases)
-[![CI](https://github.com/gnusec/codex-solo/actions/workflows/release.yml/badge.svg)](https://github.com/gnusec/codex-solo/actions)
-[![Downloads](https://img.shields.io/github/downloads/gnusec/codex-solo/total)](https://github.com/gnusec/codex-solo/releases)
-[![Stars](https://img.shields.io/github/stars/gnusec/codex-solo?style=social)](https://github.com/gnusec/codex-solo/stargazers)
-[![License](https://img.shields.io/github/license/gnusec/codex-solo)](LICENSE)
 ## Quick Demo
 ![TUI Demo (GIF)](assets/tui-demo.gif)
 
