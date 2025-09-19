@@ -1,8 +1,5 @@
-भाषाएँ: हिन्दी (वर्तमान) · English · 简体中文 · Español · العربية
-- English: ../docs/README.en.md
-- 简体中文: ../docs/README.zh-CN.md
-- Español: ../docs/README.es.md
-- العربية: ../docs/README.ar.md
+भाषाएँ:
+[हिन्दी](README.hi.md) · [English](README.en.md) · [简体中文](README.zh-CN.md) · [Español](README.es.md) · [العربية](README.ar.md)
 
 # Codex का SOLO मोड — त्वरित मार्गदर्शिका
 
@@ -25,5 +22,5 @@
 - प्रत्येक कंसोल के लिए अलग `.json` हेतु `CODEX_SOLO_CONFIG` का प्रयोग करें।
 
 अधिक जानकारी
-- उन्नत मार्गदर्शिका: ../docs/SOLO.hi.md
-- English: ../docs/README.en.md; 中文: ../docs/README.zh-CN.md
+- उन्नत मार्गदर्शिका: SOLO.hi.md
+- English: README.en.md; 中文: README.zh-CN.md

@@ -1,8 +1,5 @@
-Idiomas: Español (actual) · English · 简体中文 · العربية · हिन्दी
-- English: ../docs/README.en.md
-- 简体中文: ../docs/README.zh-CN.md
-- العربية: ../docs/README.ar.md
-- हिन्दी: ../docs/README.hi.md
+Idiomas:
+[Español](README.es.md) · [English](README.en.md) · [简体中文](README.zh-CN.md) · [العربية](README.ar.md) · [हिन्दी](README.hi.md)
 
 # Modo SOLO de Codex — Guía Rápida
 
@@ -25,5 +22,5 @@ Multi‑instancia (A/B)
 - Usa `CODEX_SOLO_CONFIG` para que cada consola tenga su propio archivo `.json`.
 
 Más
-- Guía avanzada: ../docs/SOLO.es.md
-- English: ../docs/README.en.md; 中文: ../docs/README.zh-CN.md
+- Guía avanzada: SOLO.es.md
+- English: README.en.md; 中文: README.zh-CN.md

@@ -3,11 +3,8 @@
 发布下载（最新）：https://github.com/gnusec/codex-solo/releases
 入群 / Discussions：https://github.com/gnusec/codex-solo/discussions
 
-语言 / Languages：简体中文（当前） · English · Español · العربية · हिन्दी
-- English: docs/README.en.md
-- Español: docs/README.es.md
-- العربية: docs/README.ar.md
-- हिन्दी: docs/README.hi.md
+语言 / Languages：
+[简体中文](docs/README.zh-CN.md) · [English](docs/README.en.md) · [Español](docs/README.es.md) · [العربية](docs/README.ar.md) · [हिन्दी](docs/README.hi.md)
 
 # Codex SOLO
 
@@ -49,9 +46,11 @@ Slogan：独闯天涯，凭证为王；不靠嘴，靠退出码。
 - 最新发布与校验和：https://github.com/gnusec/codex-solo/releases
 
 ## Docs
-- 多语言上手：docs/README.en.md · docs/README.zh-CN.md · docs/README.es.md · docs/README.ar.md · docs/README.hi.md
-- 深入原理：docs/SOLO.en.md · docs/SOLO.zh-CN.md · docs/SOLO.es.md · docs/SOLO.ar.md · docs/SOLO.hi.md
-- 路线图：docs/ROADMAP.md
+- 多语言上手：
+  [English](docs/README.en.md) · [简体中文](docs/README.zh-CN.md) · [Español](docs/README.es.md) · [العربية](docs/README.ar.md) · [हिन्दी](docs/README.hi.md)
+- 深入原理：
+  [SOLO.en.md](docs/SOLO.en.md) · [SOLO.zh-CN.md](docs/SOLO.zh-CN.md) · [SOLO.es.md](docs/SOLO.es.md) · [SOLO.ar.md](docs/SOLO.ar.md) · [SOLO.hi.md](docs/SOLO.hi.md)
+- 路线图：[docs/ROADMAP.md](docs/ROADMAP.md)
 
 ## 常见场景（Common Scenarios）
 - 测试驱动（Python 示例）

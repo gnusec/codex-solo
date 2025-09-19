@@ -1,8 +1,5 @@
-Languages: English (current) · 简体中文 · Español · العربية · हिन्दी
-- 简体中文: ../docs/README.zh-CN.md
-- Español: ../docs/README.es.md
-- العربية: ../docs/README.ar.md
-- हिन्दी: ../docs/README.hi.md
+Languages:
+[English](README.en.md) · [简体中文](README.zh-CN.md) · [Español](README.es.md) · [العربية](README.ar.md) · [हिन्दी](README.hi.md)
 
 # Codex SOLO — Quick Guide
 
@@ -55,7 +52,7 @@ Build (Linux static musl)
 - Run: `bash scripts/build-static.sh`
 
 Deep Dive
-- See: ../docs/SOLO.en.md
+- See: SOLO.en.md
 
 Run
 - `cd vendor/codex/codex-rs && cargo build -p codex-cli --release`

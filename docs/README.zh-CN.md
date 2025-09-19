@@ -1,8 +1,5 @@
-语言：简体中文（当前） · English · Español · العربية · हिन्दी
-- English: ../docs/README.en.md
-- Español: ../docs/README.es.md
-- العربية: ../docs/README.ar.md
-- हिन्दी: ../docs/README.hi.md
+语言：
+[简体中文](README.zh-CN.md) · [English](README.en.md) · [Español](README.es.md) · [العربية](README.ar.md) · [हिन्दी](README.hi.md)
 
 # Codex SOLO 模式 — 快速上手
 
@@ -55,7 +52,7 @@
 - 执行：`bash scripts/build-static.sh`
 
 深入原理
-- 详见：../docs/SOLO.zh-CN.md
+- 详见：SOLO.zh-CN.md
 
 运行
 - `cd vendor/codex/codex-rs && cargo build -p codex-cli --release`
