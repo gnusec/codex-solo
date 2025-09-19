@@ -6,7 +6,7 @@ set -euo pipefail
 # - Initializes a repo (if needed), commits current tree, pushes main, and optional tag.
 #
 # Usage:
-#   bash scripts/push-github.sh --repo <owner/repo> --pat-file </path/to/pat.txt> [--tag vX.Y.Z]
+#   bash scripts/push-github.sh --repo <owner/repo> --pat-file </path/to/pat.txt> [--tag vX.Y.Z] [--force]
 #
 # Example:
 #   bash scripts/push-github.sh --repo gnusec/codex-solo --pat-file /tmp/codex-solo-pat.txt --tag v0.1.0
@@ -14,12 +14,14 @@ set -euo pipefail
 repo=""
 pat_file=""
 tag=""
+force=false
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --repo) repo="$2"; shift 2 ;;
     --pat-file) pat_file="$2"; shift 2 ;;
     --tag) tag="$2"; shift 2 ;;
+    --force) force=true; shift ;;
     -h|--help)
       sed -n '1,60p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
     *) echo "Unknown arg: $1" >&2; exit 2 ;;
@@ -59,7 +61,14 @@ fi
 git remote add origin "$REMOTE_URL"
 
 echo "==> Pushing main to $repo"
+set +e
 git push -u origin main
+rc=$?
+set -e
+if [[ $rc -ne 0 && "$force" == "true" ]]; then
+  echo "Non fast-forward; forcing with --force-with-lease"
+  git push --force-with-lease origin main
+fi
 
 if [[ -n "$tag" ]]; then
   echo "==> Pushing tag $tag"
@@ -70,4 +79,3 @@ if [[ -n "$tag" ]]; then
 fi
 
 echo "Done. Check GitHub Actions and Releases: https://github.com/${repo}"
-

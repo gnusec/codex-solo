@@ -1,0 +1,25 @@
+# General
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.tar.gz
+*.zip
+
+# Local caches / artifacts
+dist/
+artifacts/
+.codex-solo-logs/
+
+# Rust build outputs
+/target/
+**/target/
+vendor/codex/codex-rs/target/
+vendor/codex/codex-rs/**/target/
+
+# Editor settings (optional)
+.vscode/
+.idea/
+
+# Temporary working dirs inside repo
+/tmp/
