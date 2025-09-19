@@ -17,7 +17,7 @@ workspace = true
 [target.'cfg(target_os = "linux")'.dependencies]
 clap = { version = "4", features = ["derive"] }
 codex-core = { path = "../core" }
-landlock = "0.4.1"
+landlock = "0.4.3"
 libc = "0.2.175"
 seccompiler = "0.5.0"
 
