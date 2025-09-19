@@ -1,5 +1,10 @@
 ![Codex SOLO](assets/banner.svg)
 
+# Codex SOLO
+
+Slogan：独闯天涯，凭证为王；不靠嘴，靠退出码。
+作用：自动连击执行，直到“成功检查”以 0 退出码通过，才算完成。
+
 快速入口
 - 发布下载（最新）：https://github.com/gnusec/codex-solo/releases
 - 入群 / Discussions：https://github.com/gnusec/codex-solo/discussions
@@ -17,12 +22,6 @@
 [![Downloads](https://img.shields.io/github/downloads/gnusec/codex-solo/total)](https://github.com/gnusec/codex-solo/releases)
 [![Stars](https://img.shields.io/github/stars/gnusec/codex-solo?style=social)](https://github.com/gnusec/codex-solo/stargazers)
 [![License](https://img.shields.io/github/license/gnusec/codex-solo)](LICENSE)
-
-# Codex SOLO
-
-Slogan：独闯天涯，凭证为王；不靠嘴，靠退出码。
-作用：自动连击执行，直到“成功检查”以 0 退出码通过，才算完成。
-
 ## Quick Demo
 ![TUI Demo (GIF)](assets/tui-demo.gif)
 
