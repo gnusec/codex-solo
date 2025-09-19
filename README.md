@@ -14,6 +14,9 @@
 Slogan：独闯天涯，凭证为王；不靠嘴，靠退出码。
 作用：自动连击执行，直到“成功检查”以 0 退出码通过，才算完成。
 
+## Quick Demo
+![TUI Demo](assets/demo.svg)
+
 ## Quick Start
 - 构建：`cd vendor/codex/codex-rs && cargo build -p codex-cli --release`
 - 运行：`./vendor/codex/codex-rs/target/release/codex`
@@ -49,6 +52,37 @@ Slogan：独闯天涯，凭证为王；不靠嘴，靠退出码。
 - 多语言上手：docs/README.en.md · docs/README.zh-CN.md · docs/README.es.md · docs/README.ar.md · docs/README.hi.md
 - 深入原理：docs/SOLO.en.md · docs/SOLO.zh-CN.md · docs/SOLO.es.md · docs/SOLO.ar.md · docs/SOLO.hi.md
 - 路线图：docs/ROADMAP.md
+
+## 常见场景（Common Scenarios）
+- 测试驱动（Python 示例）
+  ```json
+  {
+    "kickoff_prompt": "补全实现并让测试通过",
+    "success_cmd": ["pytest", "-q"],
+    "continue_prompt": "继续（修到全绿）",
+    "exit_on_success": true,
+    "interval_seconds": 30
+  }
+  ```
+- 文档构建/发布门禁（MkDocs 示例）
+  ```json
+  {
+    "kickoff_prompt": "完善文档并保证可构建",
+    "success_sh": "mkdocs build >/dev/null && test -f site/index.html",
+    "continue_prompt": "继续（直到构建产物存在）",
+    "exit_on_success": true
+  }
+  ```
+- 代码健康（Rust 示例）
+  ```json
+  {
+    "kickoff_prompt": "修复警告并通过测试",
+    "success_sh": "cargo clippy -- -D warnings && cargo fmt -- --check && cargo test -q",
+    "continue_prompt": "继续（直到无警告且测试通过）",
+    "exit_on_success": true
+  }
+  ```
+
 
 ## License
 见 `LICENSE`
