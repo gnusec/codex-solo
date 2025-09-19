@@ -1,14 +1,13 @@
 ![Codex SOLO](assets/banner.svg)
 
 # Codex SOLO
-
-功能概述：自动连续推进，直到“成功检查”通过。成功检查可脚本化（命令/脚本返回 0、测试全绿、文件/输出匹配等）；支持自启动、轮询间隔、成功后退出、多实例配置。
-
 [![Release](https://img.shields.io/github/v/release/gnusec/codex-solo?display_name=tag)](https://github.com/gnusec/codex-solo/releases)
 [![CI](https://github.com/gnusec/codex-solo/actions/workflows/release.yml/badge.svg)](https://github.com/gnusec/codex-solo/actions)
 [![Downloads](https://img.shields.io/github/downloads/gnusec/codex-solo/total)](https://github.com/gnusec/codex-solo/releases)
 [![Stars](https://img.shields.io/github/stars/gnusec/codex-solo?style=social)](https://github.com/gnusec/codex-solo/stargazers)
 [![License](https://img.shields.io/github/license/gnusec/codex-solo)](LICENSE)
+
+功能概述：自动连续推进，直到“成功检查”通过。成功检查可脚本化（命令/脚本返回 0、测试全绿、文件/输出匹配等）；支持自启动、轮询间隔、成功后退出、多实例配置。
 
 快速入口
 - 发布下载（最新）：https://github.com/gnusec/codex-solo/releases
