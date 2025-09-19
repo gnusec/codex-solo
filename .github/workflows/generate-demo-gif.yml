@@ -22,19 +22,39 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y imagemagick librsvg2-bin fonts-dejavu-core
-      - name: Render frames from SVG
+      - name: Render frames from SVG (terminal-style)
         run: |
           set -euo pipefail
           mkdir -p .work
-          rsvg-convert -w 1040 -h 360 assets/demo.svg -o .work/base.png
-          # Frame 1: initial
-          cp .work/base.png .work/frame1.png
-          # Frame 2: auto-continue
-          convert .work/base.png -gravity South -fill '#c9d1d9' -pointsize 18 -font DejaVu-Sans-Mono -annotate +0+38 '… auto-continue' .work/frame2.png
-          # Frame 3: pytest exit 1
-          convert .work/base.png -gravity South -fill '#d29922' -pointsize 18 -font DejaVu-Sans-Mono -annotate +0+38 'success_cmd: pytest -q  → exit=1' .work/frame3.png
-          # Frame 4: success exit 0
-          convert .work/base.png -gravity South -fill '#3fb950' -pointsize 18 -font DejaVu-Sans-Mono -annotate +0+38 'SUCCESS proof: exit code 0 — exiting' .work/frame4.png
+          rsvg-convert -w 1040 -h 360 assets/demo-real.svg -o .work/base.png
+          # common text attributes
+          FONT="DejaVu-Sans-Mono"
+          # Frame 1 – open + /solo
+          convert .work/base.png -gravity NorthWest -font "$FONT" -pointsize 18 \
+            -fill '#58a6ff' -annotate +40+70 '$ codex' \
+            -fill '#c9d1d9' -annotate +40+100 '/solo enabled ✓   interval=30s   exit_on_success=true' \
+            -fill '#8b949e' -annotate +40+130 'kickoff: 实现并让测试通过' \
+            .work/frame1.png
+          # Frame 2 – run, failing tests
+          convert .work/base.png -gravity NorthWest -font "$FONT" -pointsize 18 \
+            -fill '#58a6ff' -annotate +40+70 '$ codex' \
+            -fill '#c9d1d9' -annotate +40+100 'success_cmd: pytest -q' \
+            -fill '#d29922' -annotate +300+100 '→ exit=1' \
+            -fill '#8b949e' -annotate +40+130 '… auto-continue' \
+            .work/frame2.png
+          # Frame 3 – keep iterating
+          convert .work/base.png -gravity NorthWest -font "$FONT" -pointsize 18 \
+            -fill '#58a6ff' -annotate +40+70 '$ codex' \
+            -fill '#c9d1d9' -annotate +40+100 'continue: fix tests' \
+            -fill '#8b949e' -annotate +40+130 'running…' \
+            .work/frame3.png
+          # Frame 4 – success
+          convert .work/base.png -gravity NorthWest -font "$FONT" -pointsize 18 \
+            -fill '#58a6ff' -annotate +40+70 '$ codex' \
+            -fill '#c9d1d9' -annotate +40+100 'success_cmd: pytest -q' \
+            -fill '#3fb950' -annotate +300+100 '→ exit=0' \
+            -fill '#3fb950' -annotate +40+130 'SUCCESS proof: exit code 0 — exiting' \
+            .work/frame4.png
       - name: Assemble GIF
         run: |
           set -euo pipefail

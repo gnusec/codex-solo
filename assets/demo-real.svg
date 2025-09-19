@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="360" viewBox="0 0 1040 360">
+  <defs>
+    <style>
+      .bg { fill: #0b1020; }
+      .term { fill: #0e1629; stroke: #1d2d4d; stroke-width: 2; rx: 10; }
+      .bar { fill: #0c1322; }
+      .btnr { fill: #ff5f56; }
+      .btny { fill: #ffbd2e; }
+      .btng { fill: #27c93f; }
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1040" height="360"/>
+  <rect class="term" x="20" y="20" width="1000" height="320" rx="10"/>
+  <rect class="bar" x="20" y="20" width="1000" height="28" rx="10"/>
+  <circle class="btnr" cx="44" cy="34" r="6"/>
+  <circle class="btny" cx="64" cy="34" r="6"/>
+  <circle class="btng" cx="84" cy="34" r="6"/>
+</svg>
