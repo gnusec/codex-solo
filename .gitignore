@@ -9,6 +9,7 @@ Thumbs.db
 # Local caches / artifacts
 dist/
 artifacts/
+.github/artifacts/
 .codex-solo-logs/
 
 # Rust build outputs
@@ -16,6 +17,20 @@ artifacts/
 **/target/
 vendor/codex/codex-rs/target/
 vendor/codex/codex-rs/**/target/
+
+# Local binaries / archives not for source control
+/codex-solo
+/samples-*.tar.gz
+/samples/**/codex-solo
+/run.log
+
+# Demo casts
+*.cast
+
+# Keep only curated GIFs in assets
+assets/*.gif
+!assets/tui-demo.gif
+!assets/tui-demo-real.gif
 
 # Editor settings (optional)
 .vscode/
