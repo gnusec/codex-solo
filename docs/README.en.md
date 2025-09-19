@@ -3,6 +3,11 @@ Languages:
 
 # Codex SOLO — Quick Guide
 
+Functional overview
+- Automatically continues until success checks pass
+- Scriptable checks: command/script exit 0, tests green, file/output match
+- Supports autostart, interval between iterations, exit-on-success, multi-instance configs
+
 Overview
 - SOLO keeps working automatically until a success condition is met.
 - Toggle in TUI with `/solo`, or autostart via env or file.

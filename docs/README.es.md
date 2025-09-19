@@ -3,6 +3,11 @@ Idiomas:
 
 # Modo SOLO de Codex — Guía Rápida
 
+Descripción funcional
+- Avanza automáticamente hasta que las comprobaciones de éxito se cumplan
+- Comprobaciones scriptables: salida 0 de comando/script, tests en verde, coincidencia de archivo/salida
+- Soporta autoinicio, intervalo entre iteraciones, salir al tener éxito y configuración multi‑instancia
+
 Resumen
 - SOLO continúa trabajando automáticamente hasta que se cumpla una condición de éxito.
 - Activa con `/solo` en la TUI o usa `CODEX_SOLO_AUTOSTART=1`.
