@@ -1,5 +1,8 @@
 name: Release
 
+permissions:
+  contents: write
+
 on:
   push:
     tags:
@@ -28,6 +31,11 @@ jobs:
         with:
           workspaces: |
             vendor/codex/codex-rs
+
+      - name: Ensure Rust target installed (musl)
+        if: matrix.use_cross == false && contains(matrix.target, 'musl')
+        run: |
+          rustup target add ${{ matrix.target }}
 
       - name: Install dependencies
         if: matrix.use_cross == false
