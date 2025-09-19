@@ -1,3 +1,5 @@
+![Codex SOLO](assets/banner.svg)
+
 快速入口
 - 发布下载（最新）：https://github.com/gnusec/codex-solo/releases
 - 入群 / Discussions：https://github.com/gnusec/codex-solo/discussions
@@ -15,8 +17,6 @@
 [![Downloads](https://img.shields.io/github/downloads/gnusec/codex-solo/total)](https://github.com/gnusec/codex-solo/releases)
 [![Stars](https://img.shields.io/github/stars/gnusec/codex-solo?style=social)](https://github.com/gnusec/codex-solo/stargazers)
 [![License](https://img.shields.io/github/license/gnusec/codex-solo)](LICENSE)
-
-![Codex SOLO](assets/banner.svg)
 
 # Codex SOLO
 
