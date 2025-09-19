@@ -1,20 +1,14 @@
 ![Codex SOLO](assets/banner.svg)
 
+发布下载（最新）：https://github.com/gnusec/codex-solo/releases · 入群 / Discussions：https://github.com/gnusec/codex-solo/discussions · 贡献（Contribute）：[CONTRIBUTING.md](CONTRIBUTING.md) · 路线图（Roadmap）：[docs/ROADMAP.md](docs/ROADMAP.md) · Good First Issues：https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22 · Help Wanted：https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
+
+语言 / Languages： [简体中文](docs/README.zh-CN.md) · [English](docs/README.en.md) · [Español](docs/README.es.md) · [العربية](docs/README.ar.md) · [हिन्दी](docs/README.hi.md)
+
 [![Release](https://img.shields.io/github/v/release/gnusec/codex-solo?display_name=tag)](https://github.com/gnusec/codex-solo/releases)
 [![CI](https://github.com/gnusec/codex-solo/actions/workflows/release.yml/badge.svg)](https://github.com/gnusec/codex-solo/actions)
 [![Downloads](https://img.shields.io/github/downloads/gnusec/codex-solo/total)](https://github.com/gnusec/codex-solo/releases)
 [![Stars](https://img.shields.io/github/stars/gnusec/codex-solo?style=social)](https://github.com/gnusec/codex-solo/stargazers)
 [![License](https://img.shields.io/github/license/gnusec/codex-solo)](LICENSE)
-
-发布下载（最新）：https://github.com/gnusec/codex-solo/releases
-入群 / Discussions：https://github.com/gnusec/codex-solo/discussions
-贡献（Contribute）：[CONTRIBUTING.md](CONTRIBUTING.md)
-路线图（Roadmap）：[docs/ROADMAP.md](docs/ROADMAP.md)
-Good First Issues：https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
-Help Wanted：https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
-
-语言 / Languages：
-[简体中文](docs/README.zh-CN.md) · [English](docs/README.en.md) · [Español](docs/README.es.md) · [العربية](docs/README.ar.md) · [हिन्दी](docs/README.hi.md)
 
 # Codex SOLO
 
