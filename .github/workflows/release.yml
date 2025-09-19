@@ -32,10 +32,15 @@ jobs:
           workspaces: |
             vendor/codex/codex-rs
 
-      - name: Ensure Rust target installed (musl)
+      - name: Ensure Rust target installed (musl, toolchain-aware)
         if: matrix.use_cross == false && contains(matrix.target, 'musl')
+        working-directory: vendor/codex/codex-rs
         run: |
-          rustup target add ${{ matrix.target }}
+          set -euo pipefail
+          TOOLCHAIN=$(sed -n 's/^channel\s*=\s*"\([^"]\+\)"/\1/p' rust-toolchain.toml | head -n1 || true)
+          if [ -z "$TOOLCHAIN" ]; then TOOLCHAIN=stable; fi
+          rustup toolchain install "$TOOLCHAIN"
+          rustup target add --toolchain "$TOOLCHAIN" ${{ matrix.target }}
 
       - name: Install dependencies
         if: matrix.use_cross == false
