@@ -39,7 +39,7 @@ codex-login = { path = "../login" }
 codex-ollama = { path = "../ollama" }
 codex-protocol = { path = "../protocol" }
 color-eyre = "0.6.3"
-crossterm = { version = "0.28.1", features = [
+crossterm = { version = "0.29.0", features = [
     "bracketed-paste",
     "event-stream",
 ] }
