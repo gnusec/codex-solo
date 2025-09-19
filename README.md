@@ -90,6 +90,13 @@ Notes:
 - The shell snippet returns 0 only when the report exactly contains `42 passed`.
 - You can replace with any scriptable proof, e.g. checking a file, exact output, or JSON value.
 
+Cross‑culture jokes (safe for work)
+- EN: Your laptop works 9–9–6, SOLO works 0–0–7. Who’s the MVP?
+- 中文：兄弟，牛马讲效率，SOLO 讲证据。绿灯一亮，收工回家。
+- ES: Café para el humano, salida 0 para la máquina.
+- AR: القهوة للبشر، ورمز الخروج 0 للآلة — كِلاهما ينجز.
+- HI: इंसान के लिए चाय/कॉफी, मशीन के लिए exit 0 — काम पूरा!
+
 Interactive Usage Flow
 - Put `.codex-solo.json` in your project root.
 - Run `codex` (interactive).
