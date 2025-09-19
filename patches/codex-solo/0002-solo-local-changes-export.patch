@@ -1,0 +1,95 @@
+From fa14b947ad9712f8f6990b45e5b2c776ca471d8d Mon Sep 17 00:00:00 2001
+From: Developer <developer@example.com>
+Date: Fri, 19 Sep 2025 07:16:44 +0800
+Subject: [PATCH 2/2] solo: local changes (export)
+
+---
+ codex-rs/tui/src/chatwidget.rs       | 15 +--------------
+ codex-rs/tui/src/chatwidget/tests.rs |  5 ++++-
+ 2 files changed, 5 insertions(+), 15 deletions(-)
+
+diff --git a/codex-rs/tui/src/chatwidget.rs b/codex-rs/tui/src/chatwidget.rs
+index 14d2ace6..fc31853a 100644
+--- a/codex-rs/tui/src/chatwidget.rs
++++ b/codex-rs/tui/src/chatwidget.rs
+@@ -96,11 +96,7 @@ use codex_core::protocol::AskForApproval;
+ use codex_core::protocol::SandboxPolicy;
+ use codex_core::protocol_config_types::ReasoningEffort as ReasoningEffortConfig;
+ use codex_file_search::FileMatch;
+-<<<<<<< HEAD
+-=======
+-use codex_protocol::mcp_protocol::ConversationId;
+ use serde::Deserialize;
+->>>>>>> solo: local changes (export)
+ 
+ // Track information about an in-flight exec command.
+ struct RunningCommand {
+@@ -733,10 +729,8 @@ impl ChatWidget {
+             queued_user_messages: VecDeque::new(),
+             show_welcome_banner: true,
+             suppress_session_configured_redraw: false,
+-<<<<<<< HEAD
+             pending_notification: None,
+             is_review_mode: false,
+-=======
+             // SOLO defaults
+             solo_active: false,
+             solo_done_token: "[SOLO_DONE]".to_string(),
+@@ -746,7 +740,6 @@ impl ChatWidget {
+             solo_exit_on_success: false,
+             solo_interval_seconds: None,
+             last_agent_message: None,
+->>>>>>> solo: local changes (export)
+         }
+     }
+ 
+@@ -802,10 +795,8 @@ impl ChatWidget {
+             queued_user_messages: VecDeque::new(),
+             show_welcome_banner: true,
+             suppress_session_configured_redraw: true,
+-<<<<<<< HEAD
+             pending_notification: None,
+             is_review_mode: false,
+-=======
+             // SOLO defaults
+             solo_active: false,
+             solo_done_token: "[SOLO_DONE]".to_string(),
+@@ -815,7 +806,6 @@ impl ChatWidget {
+             solo_exit_on_success: false,
+             solo_interval_seconds: None,
+             last_agent_message: None,
+->>>>>>> solo: local changes (export)
+         }
+     }
+ 
+@@ -1859,10 +1849,7 @@ impl ChatWidget {
+                         items: vec![InputItem::Text { text }],
+                     }));
+                 });
+-                self.add_info_message(
+-                    format!("SOLO: next check in {}s", secs),
+-                    None,
+-                );
++                self.add_info_message(format!("SOLO: next check in {}s", secs), None);
+                 return;
+             }
+         }
+diff --git a/codex-rs/tui/src/chatwidget/tests.rs b/codex-rs/tui/src/chatwidget/tests.rs
+index 074c3049..8194f0f0 100644
+--- a/codex-rs/tui/src/chatwidget/tests.rs
++++ b/codex-rs/tui/src/chatwidget/tests.rs
+@@ -63,7 +63,10 @@ fn solo_success_shell_check_file_exists() {
+     let path = tmp.path().to_string_lossy().to_string();
+     // Shell snippet uses `test -f` to check for file existence
+     let cmd = format!("test -f {}", shlex::quote(&path));
+-    assert!(super::run_check_shell(&cmd), "expected success for existing file");
++    assert!(
++        super::run_check_shell(&cmd),
++        "expected success for existing file"
++    );
+ }
+ 
+ #[test]
+-- 
+2.39.5
+

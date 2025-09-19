@@ -1,0 +1,9 @@
+{
+  "autostart": true,
+  "kickoff_prompt": "每隔1分钟评估项目是否已开发完成：如果完成，请在仓库根目录创建 FINISH.txt 和 JUDGE_DONE.txt 作为凭证；若未完成，请解释差距并继续下一轮。不要输出 [SOLO_DONE]。",
+  "continue_prompt": "继续（再次评估并在完成时创建 FINISH.txt 和 JUDGE_DONE.txt）",
+  "done_token": "",
+  "interval_seconds": 60,
+  "success_sh": "test -f JUDGE_DONE.txt",
+  "exit_on_success": true
+}

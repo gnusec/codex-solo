@@ -1,0 +1,59 @@
+Done. I wired up a minimal, low‑drift SOLO mode toggle with autostart, static builds, and multilingual docs.
+
+What I changed
+- Added SOLO autostart
+  - New env flag: `CODEX_SOLO_AUTOSTART=1` autostarts SOLO at launch.
+  - New file option: `.codex-solo.json` supports `"autostart": true`.
+  - Implemented in `vendor/codex/codex-rs/tui/src/chatwidget.rs`:
+    - Autostart is checked right after session setup.
+    - Priority: env flag > file `autostart` > off.
+- Preserved simple, flexible success criteria
+  - `.codex-solo.json` supports:
+    - `done_token` detection in agent output.
+    - `success_cmd` (argv) and `success_sh` (shell) checks returning exit code 0.
+  - SOLO keeps auto‑continuing with `continue_prompt` until success is reached.
+- Static builds (musl)
+  - Script `scripts/build-static.sh` builds x86_64 and aarch64 musl binaries under `vendor/codex/codex-rs/target/*-unknown-linux-musl/release/codex`.
+- Multilingual docs
+  - English: `docs/README.en.md`
+  - 简体中文: `docs/README.zh-CN.md`
+  - Root `README.md` updated and links added.
+- Samples
+  - `.codex-solo.json` examples under `samples/solo/` including `autostart.json`.
+
+How to use SOLO
+- Toggle in TUI: type `/solo` (toggle on/off).
+- Autostart on launch:
+  - Env: `CODEX_SOLO_AUTOSTART=1 ./codex`
+  - Or add to `.codex-solo.json`: `{ "autostart": true, ... }`
+- Two modes (with examples in `README.md` and `docs/`):
+  - Topic only; agent self-judges via a token in output:
+    - `done_token` defaults to `[SOLO_DONE]`, override if you want.
+  - Topic + explicit success marker:
+    - `success_cmd`: e.g., `["pytest","-q"]` (exits 0 on success).
+    - `success_sh`: any shell snippet that returns 0 only when condition is met (e.g., grep exact string “42 passed”).
+
+Build and distribute
+- Interactive build (Linux/macOS/Windows):
+  - `cd vendor/codex/codex-rs && cargo build -p codex-cli --release`
+- Static Linux (best portability):
+  - Prereqs: `rustup target add x86_64-unknown-linux-musl aarch64-unknown-linux-musl`
+  - Run: `bash scripts/build-static.sh`
+  - Artifacts: `vendor/codex/codex-rs/target/*-unknown-linux-musl/release/codex`
+- Packaging:
+  - Zip/tar each platform’s binary, publish as GitHub Releases.
+
+Where it integrates
+- Slash command `/solo` alongside `/status` with full context inheritance (no protocol changes).
+- Minimal, surgical change confined to TUI (`chatwidget.rs`), to reduce future merge friction with upstream Codex.
+
+Paths changed
+- `vendor/codex/codex-rs/tui/src/chatwidget.rs` (SOLO autostart + config field)
+- `README.md` (usage, autostart)
+- `docs/README.en.md`, `docs/README.zh-CN.md` (multilingual docs)
+- `scripts/build-static.sh` (musl build script, already present; documented)
+- `samples/solo/autostart.json` (new example)
+
+Want me to:
+- Build the static binaries now to confirm artifacts?
+- Add a small CLI flag alias (e.g., `--solo-autostart`) in the TUI CLI as well? (Env+file works already; adding a flag is slightly more invasive.)

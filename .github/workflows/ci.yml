@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-test-musl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust (stable)
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: |
+            vendor/codex/codex-rs
+
+      - name: Format check
+        working-directory: vendor/codex/codex-rs
+        run: cargo fmt --all -- --check
+
+      - name: Clippy (non-fatal)
+        working-directory: vendor/codex/codex-rs
+        run: cargo clippy -p codex-tui || true
+
+      - name: Unit tests (tui only)
+        working-directory: vendor/codex/codex-rs
+        run: cargo test -p codex-tui --no-fail-fast -- --nocapture
+
+      - name: Install musl toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y musl-tools build-essential pkg-config curl git make
+          rustup target add x86_64-unknown-linux-musl
+
+      - name: Build codex (x86_64-unknown-linux-musl)
+        working-directory: vendor/codex/codex-rs
+        run: cargo build -p codex-cli --release --target x86_64-unknown-linux-musl
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: codex-x86_64-unknown-linux-musl
+          path: vendor/codex/codex-rs/target/x86_64-unknown-linux-musl/release/codex

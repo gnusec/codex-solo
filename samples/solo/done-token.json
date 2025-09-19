@@ -1,0 +1,5 @@
+{
+  "kickoff_prompt": "实现一个CLI工具，读取CSV并输出JSON。最后请打印 [SOLO_DONE]",
+  "done_token": "[SOLO_DONE]",
+  "continue_prompt": "继续"
+}

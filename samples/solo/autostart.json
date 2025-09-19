@@ -1,0 +1,7 @@
+{
+  "autostart": true,
+  "kickoff_prompt": "运行一个最小任务，完成后打印 [SOLO_DONE]",
+  "done_token": "[SOLO_DONE]",
+  "continue_prompt": "继续",
+  "exit_on_success": true
+}

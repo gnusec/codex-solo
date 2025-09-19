@@ -1,0 +1,9 @@
+{
+  "autostart": true,
+  "kickoff_prompt": "输出 solo-a1 -> 系统时间",
+  "continue_prompt": "输出 solo-a2 -> 系统时间",
+  "done_token": "",
+  "success_sh": "test -f FINISH.txt",
+  "interval_seconds": 10,
+  "exit_on_success": true
+}

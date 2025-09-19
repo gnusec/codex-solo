@@ -1,0 +1,463 @@
+From b17ef9ee14b19a97c7edc31f7e3d267133369285 Mon Sep 17 00:00:00 2001
+From: Developer <developer@example.com>
+Date: Fri, 19 Sep 2025 07:04:36 +0800
+Subject: [PATCH 1/2] solo: local changes (export)
+
+---
+ codex-rs/tui/src/chatwidget.rs       | 302 +++++++++++++++++++++++++++
+ codex-rs/tui/src/chatwidget/tests.rs |  34 +++
+ codex-rs/tui/src/slash_command.rs    |   3 +
+ 3 files changed, 339 insertions(+)
+
+diff --git a/codex-rs/tui/src/chatwidget.rs b/codex-rs/tui/src/chatwidget.rs
+index e024fd0f..14d2ace6 100644
+--- a/codex-rs/tui/src/chatwidget.rs
++++ b/codex-rs/tui/src/chatwidget.rs
+@@ -96,6 +96,11 @@ use codex_core::protocol::AskForApproval;
+ use codex_core::protocol::SandboxPolicy;
+ use codex_core::protocol_config_types::ReasoningEffort as ReasoningEffortConfig;
+ use codex_file_search::FileMatch;
++<<<<<<< HEAD
++=======
++use codex_protocol::mcp_protocol::ConversationId;
++use serde::Deserialize;
++>>>>>>> solo: local changes (export)
+ 
+ // Track information about an in-flight exec command.
+ struct RunningCommand {
+@@ -147,6 +152,17 @@ pub(crate) struct ChatWidget {
+     pending_notification: Option<Notification>,
+     // Simple review mode flag; used to adjust layout and banners.
+     is_review_mode: bool,
++    // SOLO mode state
++    solo_active: bool,
++    solo_done_token: String,
++    solo_continue_prompt: String,
++    solo_success_cmd: Option<Vec<String>>, // direct argv command, if configured
++    solo_success_sh: Option<String>,       // shell string, if configured
++    // When true, exit the TUI process when SOLO success is reached
++    solo_exit_on_success: bool,
++    // Optional delay between SOLO turns (seconds)
++    solo_interval_seconds: Option<u64>,
++    last_agent_message: Option<String>,
+ }
+ 
+ struct UserMessage {
+@@ -200,9 +216,14 @@ impl ChatWidget {
+         if !self.suppress_session_configured_redraw {
+             self.request_redraw();
+         }
++
++        // Autostart SOLO if configured via env or .codex-solo.json
++        self.maybe_autostart_solo();
+     }
+ 
+     fn on_agent_message(&mut self, message: String) {
++        // Track last agent message for SOLO done-token checks
++        self.last_agent_message = Some(message.clone());
+         let sink = AppEventHistorySink(self.app_event_tx.clone());
+         let finished = self.stream.apply_final_answer(&message, &sink);
+         self.handle_if_stream_finished(finished);
+@@ -273,6 +294,9 @@ impl ChatWidget {
+         self.running_commands.clear();
+         self.request_redraw();
+ 
++        // SOLO: decide whether to continue or stop
++        self.on_solo_after_task();
++
+         // If there is a queued user message, send exactly one now to begin the next turn.
+         self.maybe_send_next_queued_input();
+         // Emit a notification when the turn completes (suppressed if focused).
+@@ -709,8 +733,20 @@ impl ChatWidget {
+             queued_user_messages: VecDeque::new(),
+             show_welcome_banner: true,
+             suppress_session_configured_redraw: false,
++<<<<<<< HEAD
+             pending_notification: None,
+             is_review_mode: false,
++=======
++            // SOLO defaults
++            solo_active: false,
++            solo_done_token: "[SOLO_DONE]".to_string(),
++            solo_continue_prompt: "继续".to_string(),
++            solo_success_cmd: None,
++            solo_success_sh: None,
++            solo_exit_on_success: false,
++            solo_interval_seconds: None,
++            last_agent_message: None,
++>>>>>>> solo: local changes (export)
+         }
+     }
+ 
+@@ -766,8 +802,20 @@ impl ChatWidget {
+             queued_user_messages: VecDeque::new(),
+             show_welcome_banner: true,
+             suppress_session_configured_redraw: true,
++<<<<<<< HEAD
+             pending_notification: None,
+             is_review_mode: false,
++=======
++            // SOLO defaults
++            solo_active: false,
++            solo_done_token: "[SOLO_DONE]".to_string(),
++            solo_continue_prompt: "继续".to_string(),
++            solo_success_cmd: None,
++            solo_success_sh: None,
++            solo_exit_on_success: false,
++            solo_interval_seconds: None,
++            last_agent_message: None,
++>>>>>>> solo: local changes (export)
+         }
+     }
+ 
+@@ -929,6 +977,13 @@ impl ChatWidget {
+             SlashCommand::Status => {
+                 self.add_status_output();
+             }
++            SlashCommand::Solo => {
++                if self.solo_active {
++                    self.disable_solo_mode();
++                } else {
++                    self.enable_solo_mode();
++                }
++            }
+             SlashCommand::Mcp => {
+                 self.add_mcp_output();
+             }
+@@ -1628,6 +1683,253 @@ const EXAMPLE_PROMPTS: [&str; 6] = [
+     "Improve documentation in @filename",
+ ];
+ 
++// SOLO mode support
++
++#[derive(Debug, Clone, Default, Deserialize)]
++struct SoloConfigFile {
++    #[serde(default)]
++    autostart: Option<bool>,
++    #[serde(default)]
++    kickoff_prompt: Option<String>,
++    #[serde(default)]
++    success_cmd: Option<Vec<String>>, // argv form, preferred for portability
++    #[serde(default)]
++    success_sh: Option<String>, // shell string, run via system shell
++    #[serde(default)]
++    done_token: Option<String>,
++    #[serde(default)]
++    continue_prompt: Option<String>,
++    #[serde(default)]
++    exit_on_success: Option<bool>,
++    #[serde(default)]
++    interval_seconds: Option<u64>,
++}
++
++impl ChatWidget {
++    /// Enable SOLO on startup when a flag is present.
++    /// Priority: env var -> .codex-solo.json autostart -> off.
++    fn maybe_autostart_solo(&mut self) {
++        // Check environment variable first (truthy values: 1, true, yes, on)
++        let env_truthy = std::env::var("CODEX_SOLO_AUTOSTART")
++            .ok()
++            .map(|v| {
++                let v = v.to_lowercase();
++                matches!(v.as_str(), "1" | "true" | "yes" | "on")
++            })
++            .unwrap_or(false);
++
++        if env_truthy {
++            self.enable_solo_mode();
++            return;
++        }
++
++        // Fallback to config file flag
++        if let Some(cfg) = self.load_solo_config_file() {
++            if cfg.autostart.unwrap_or(false) {
++                self.enable_solo_mode();
++            }
++        }
++    }
++    fn enable_solo_mode(&mut self) {
++        // Load optional .codex-solo.json from cwd for settings
++        if let Some(cfg) = self.load_solo_config_file() {
++            if let Some(done) = cfg.done_token {
++                self.solo_done_token = done;
++            }
++            if let Some(cont) = cfg.continue_prompt {
++                if !cont.trim().is_empty() {
++                    self.solo_continue_prompt = cont;
++                }
++            }
++            self.solo_success_cmd = cfg.success_cmd;
++            self.solo_success_sh = cfg.success_sh;
++            if let Some(exit) = cfg.exit_on_success {
++                self.solo_exit_on_success = exit;
++            }
++            if let Some(interval) = cfg.interval_seconds {
++                self.solo_interval_seconds = Some(interval);
++            }
++
++            // Kickoff prompt if provided
++            if let Some(kick) = cfg.kickoff_prompt {
++                if !kick.trim().is_empty() {
++                    if !self.bottom_pane.is_task_running() {
++                        self.submit_text_message(kick);
++                    } else {
++                        // Queue if a turn is running
++                        self.queued_user_messages.push_back(kick.into());
++                        self.refresh_queued_user_messages();
++                    }
++                }
++            }
++        }
++
++        // Environment override for exit-on-success: truthy => true, falsy => false
++        if let Ok(val) = std::env::var("CODEX_SOLO_EXIT_ON_SUCCESS") {
++            let v = val.to_lowercase();
++            if matches!(v.as_str(), "1" | "true" | "yes" | "on") {
++                self.solo_exit_on_success = true;
++            } else if matches!(v.as_str(), "0" | "false" | "no" | "off") {
++                self.solo_exit_on_success = false;
++            }
++        }
++        // Optional: interval between automatic continuation messages (seconds)
++        if let Ok(val) = std::env::var("CODEX_SOLO_INTERVAL_SECONDS") {
++            if let Ok(n) = val.parse::<u64>() {
++                self.solo_interval_seconds = Some(n);
++            }
++        }
++
++        // Switch approvals/sandbox to a low-friction auto-exec mode
++        // AskForApproval::OnFailure + WorkspaceWrite sandbox
++        let approval = AskForApproval::OnFailure;
++        let sandbox = SandboxPolicy::new_workspace_write_policy();
++        self.app_event_tx
++            .send(AppEvent::CodexOp(Op::OverrideTurnContext {
++                cwd: None,
++                approval_policy: Some(approval),
++                sandbox_policy: Some(sandbox.clone()),
++                model: None,
++                effort: None,
++                summary: None,
++            }));
++        self.set_approval_policy(approval);
++        self.set_sandbox_policy(sandbox);
++
++        self.solo_active = true;
++        self.add_info_message(
++            "SOLO mode enabled: will auto-continue until success".to_string(),
++            Some(
++                "Configure with .codex-solo.json; add [SOLO_DONE] or provide success_cmd"
++                    .to_string(),
++            ),
++        );
++    }
++
++    fn disable_solo_mode(&mut self) {
++        self.solo_active = false;
++        self.add_info_message("SOLO mode disabled".to_string(), None);
++    }
++
++    fn load_solo_config_file(&self) -> Option<SoloConfigFile> {
++        use std::fs;
++        // Allow overriding the SOLO config path via env. If relative, resolve against cwd.
++        let path = if let Ok(p) = std::env::var("CODEX_SOLO_CONFIG") {
++            let pb = PathBuf::from(p);
++            if pb.is_absolute() {
++                pb
++            } else {
++                self.config.cwd.join(pb)
++            }
++        } else {
++            self.config.cwd.join(".codex-solo.json")
++        };
++        if let Ok(bytes) = fs::read(&path) {
++            if let Ok(cfg) = serde_json::from_slice::<SoloConfigFile>(&bytes) {
++                return Some(cfg);
++            }
++        }
++        None
++    }
++
++    fn on_solo_after_task(&mut self) {
++        if !self.solo_active {
++            return;
++        }
++        // If success is reached, stop SOLO and announce.
++        if self.solo_success_reached() {
++            self.solo_active = false;
++            self.add_info_message("SOLO success reached".to_string(), None);
++            // Optionally exit the application once success is reached.
++            if self.solo_exit_on_success {
++                self.app_event_tx.send(AppEvent::ExitRequest);
++            }
++            return;
++        }
++        // Otherwise, continue after an optional delay.
++        if let Some(secs) = self.solo_interval_seconds {
++            if secs > 0 {
++                let text = self.build_solo_continue_message();
++                let tx = self.app_event_tx.clone();
++                tokio::spawn(async move {
++                    tokio::time::sleep(std::time::Duration::from_secs(secs)).await;
++                    // Record to history and send to agent
++                    tx.send(AppEvent::CodexOp(Op::AddToHistory { text: text.clone() }));
++                    tx.send(AppEvent::CodexOp(Op::UserInput {
++                        items: vec![InputItem::Text { text }],
++                    }));
++                });
++                self.add_info_message(
++                    format!("SOLO: next check in {}s", secs),
++                    None,
++                );
++                return;
++            }
++        }
++        // No delay configured: enqueue immediate continuation.
++        self.queued_user_messages
++            .push_back(UserMessage::from(self.build_solo_continue_message()));
++        self.refresh_queued_user_messages();
++    }
++
++    fn solo_success_reached(&self) -> bool {
++        // 1) success_cmd via argv
++        if let Some(argv) = &self.solo_success_cmd {
++            if !argv.is_empty() {
++                return run_check_argv(argv);
++            }
++        }
++        // 2) success_sh via shell
++        if let Some(sh) = &self.solo_success_sh {
++            if !sh.trim().is_empty() {
++                return run_check_shell(sh);
++            }
++        }
++        // 3) done_token in last agent message
++        if let Some(msg) = &self.last_agent_message {
++            if !self.solo_done_token.is_empty() && msg.contains(&self.solo_done_token) {
++                return true;
++            }
++        }
++        false
++    }
++
++    fn build_solo_continue_message(&self) -> String {
++        if self.solo_done_token.trim().is_empty() {
++            self.solo_continue_prompt.clone()
++        } else {
++            format!(
++                "{}（完成时请在最后输出标记 {}）",
++                self.solo_continue_prompt, self.solo_done_token
++            )
++        }
++    }
++}
++
++fn run_check_argv(argv: &Vec<String>) -> bool {
++    use std::process::Command;
++    let mut iter = argv.iter();
++    if let Some(prog) = iter.next() {
++        let args: Vec<&str> = iter.map(|s| s.as_str()).collect();
++        if let Ok(status) = Command::new(prog).args(&args).status() {
++            return status.success();
++        }
++    }
++    false
++}
++
++fn run_check_shell(cmd: &str) -> bool {
++    use std::process::Command;
++    #[cfg(target_os = "windows")]
++    let status = Command::new("cmd").args(["/C", cmd]).status();
++    #[cfg(not(target_os = "windows"))]
++    let status = Command::new("bash").args(["-lc", cmd]).status();
++    match status {
++        Ok(s) => s.success(),
++        Err(_) => false,
++    }
++}
++
+ // Extract the first bold (Markdown) element in the form **...** from `s`.
+ // Returns the inner text if found; otherwise `None`.
+ fn extract_first_bold(s: &str) -> Option<String> {
+diff --git a/codex-rs/tui/src/chatwidget/tests.rs b/codex-rs/tui/src/chatwidget/tests.rs
+index ffe3f3f7..074c3049 100644
+--- a/codex-rs/tui/src/chatwidget/tests.rs
++++ b/codex-rs/tui/src/chatwidget/tests.rs
+@@ -56,6 +56,31 @@ fn test_config() -> Config {
+     .expect("config")
+ }
+ 
++#[test]
++fn solo_success_shell_check_file_exists() {
++    // Create a temporary file and assert the shell check returns success.
++    let tmp = NamedTempFile::new().expect("temp file");
++    let path = tmp.path().to_string_lossy().to_string();
++    // Shell snippet uses `test -f` to check for file existence
++    let cmd = format!("test -f {}", shlex::quote(&path));
++    assert!(super::run_check_shell(&cmd), "expected success for existing file");
++}
++
++#[test]
++fn solo_success_shell_check_file_missing() {
++    // Construct a path that does not exist
++    let suffix: u64 = rand::random();
++    let missing = std::env::temp_dir().join(format!("codex-missing-{}", suffix));
++    let cmd = format!(
++        "test -f {}",
++        shlex::quote(&missing.to_string_lossy().to_string())
++    );
++    assert!(
++        !super::run_check_shell(&cmd),
++        "expected failure for missing file"
++    );
++}
++
+ // Backward-compat shim for older session logs that predate the
+ // `formatted_output` field on ExecCommandEnd events.
+ fn upgrade_event_payload_for_tests(mut payload: serde_json::Value) -> serde_json::Value {
+@@ -333,6 +358,15 @@ fn make_chatwidget_manual() -> (
+         suppress_session_configured_redraw: false,
+         pending_notification: None,
+         is_review_mode: false,
++        // SOLO defaults
++        solo_active: false,
++        solo_done_token: "[SOLO_DONE]".to_string(),
++        solo_continue_prompt: "继续".to_string(),
++        solo_success_cmd: None,
++        solo_success_sh: None,
++        solo_exit_on_success: false,
++        solo_interval_seconds: None,
++        last_agent_message: None,
+     };
+     (widget, rx, op_rx)
+ }
+diff --git a/codex-rs/tui/src/slash_command.rs b/codex-rs/tui/src/slash_command.rs
+index 433c0a6d..a7fd89b2 100644
+--- a/codex-rs/tui/src/slash_command.rs
++++ b/codex-rs/tui/src/slash_command.rs
+@@ -21,6 +21,7 @@ pub enum SlashCommand {
+     Diff,
+     Mention,
+     Status,
++    Solo,
+     Mcp,
+     Logout,
+     Quit,
+@@ -40,6 +41,7 @@ impl SlashCommand {
+             SlashCommand::Diff => "show git diff (including untracked files)",
+             SlashCommand::Mention => "mention a file",
+             SlashCommand::Status => "show current session configuration and token usage",
++            SlashCommand::Solo => "toggle SOLO mode: auto-continue until success",
+             SlashCommand::Model => "choose what model and reasoning effort to use",
+             SlashCommand::Approvals => "choose what Codex can do without approval",
+             SlashCommand::Mcp => "list configured MCP tools",
+@@ -68,6 +70,7 @@ impl SlashCommand {
+             SlashCommand::Diff
+             | SlashCommand::Mention
+             | SlashCommand::Status
++            | SlashCommand::Solo
+             | SlashCommand::Mcp
+             | SlashCommand::Quit => true,
+ 
+-- 
+2.39.5
+

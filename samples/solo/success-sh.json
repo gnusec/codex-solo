@@ -1,0 +1,5 @@
+{
+  "kickoff_prompt": "实现并确保测试报告显示 42 passed",
+  "success_sh": "pytest -q | tee /tmp/pytest.out >/dev/null && grep -q '42 passed' /tmp/pytest.out",
+  "continue_prompt": "继续（直到报告精确显示 42 passed）"
+}

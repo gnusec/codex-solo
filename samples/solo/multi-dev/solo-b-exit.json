@@ -1,0 +1,9 @@
+{
+  "autostart": true,
+  "kickoff_prompt": "检测当前目录下是否有000.txt：如果有，请在当前目录创建 FINISH.txt 和 JUDGE_DONE.txt",
+  "continue_prompt": "检测当前目录下是否有000.txt：如果有，请在当前目录创建 FINISH.txt 和 JUDGE_DONE.txt",
+  "done_token": "",
+  "interval_seconds": 15,
+  "success_sh": "test -f JUDGE_DONE.txt",
+  "exit_on_success": true
+}

@@ -1,0 +1,5 @@
+{
+  "kickoff_prompt": "补全实现并让测试通过",
+  "success_cmd": ["pytest", "-q"],
+  "continue_prompt": "继续（完善实现直到测试通过）"
+}
