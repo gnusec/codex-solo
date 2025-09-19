@@ -3,6 +3,7 @@
 发布下载（最新）：https://github.com/gnusec/codex-solo/releases · 入群 / Discussions：https://github.com/gnusec/codex-solo/discussions · 贡献（Contribute）：[CONTRIBUTING.md](CONTRIBUTING.md) · 路线图（Roadmap）：[docs/ROADMAP.md](docs/ROADMAP.md) · Good First Issues：https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22 · Help Wanted：https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
 
 语言 / Languages： [简体中文](docs/README.zh-CN.md) · [English](docs/README.en.md) · [Español](docs/README.es.md) · [العربية](docs/README.ar.md) · [हिन्दी](docs/README.hi.md)
+Show & Tell（演示与成果）：https://github.com/gnusec/codex-solo/discussions/9
 
 [![Release](https://img.shields.io/github/v/release/gnusec/codex-solo?display_name=tag)](https://github.com/gnusec/codex-solo/releases)
 [![CI](https://github.com/gnusec/codex-solo/actions/workflows/release.yml/badge.svg)](https://github.com/gnusec/codex-solo/actions)
@@ -58,6 +59,7 @@ Slogan：独闯天涯，凭证为王；不靠嘴，靠退出码。
 - 深入原理：
   [SOLO.en.md](docs/SOLO.en.md) · [SOLO.zh-CN.md](docs/SOLO.zh-CN.md) · [SOLO.es.md](docs/SOLO.es.md) · [SOLO.ar.md](docs/SOLO.ar.md) · [SOLO.hi.md](docs/SOLO.hi.md)
 - 路线图：[docs/ROADMAP.md](docs/ROADMAP.md)
+ - CI 无头模式（实验）：[docs/HEADLESS_CI.md](docs/HEADLESS_CI.md)
  - 贡献指南：[CONTRIBUTING.md](CONTRIBUTING.md)
  - 社区指南：[docs/COMMUNITY.md](docs/COMMUNITY.md)
 

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-label="Codex SOLO — OpenGraph image">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#00ffa8"/>
+      <stop offset="100%" stop-color="#00a3ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="#0b0f14"/>
+  <g stroke="#111826" stroke-width="1">
+    <path d="M0 80 H1280M0 160 H1280M0 240 H1280M0 320 H1280M0 400 H1280M0 480 H1280M0 560 H1280"/>
+  </g>
+  <text x="100" y="170" font-family="Inter,system-ui,-apple-system,Segoe UI,Roboto" font-size="28" fill="#8aa1b1">EXIT</text>
+  <text x="96" y="500" font-family="SFMono-Regular,Consolas,Menlo,monospace" font-size="360" fill="url(#g)">0</text>
+  <path d="M380 340 l54 54 116-116" stroke="#00ffa8" stroke-width="24" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="640" y="300" font-family="Inter,system-ui,-apple-system,Segoe UI,Roboto" font-size="88" fill="#a6b3be">Codex</text>
+  <text x="640" y="420" font-family="Inter,system-ui,-apple-system,Segoe UI,Roboto" font-size="132" fill="url(#g)">SOLO</text>
+  <text x="640" y="500" font-family="Inter,system-ui,-apple-system,Segoe UI,Roboto" font-size="28" fill="#9fb0bf">Grind until the proof says done.</text>
+</svg>
