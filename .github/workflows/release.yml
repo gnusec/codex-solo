@@ -54,6 +54,12 @@ jobs:
         if: matrix.use_cross == true
         working-directory: vendor/codex/codex-rs
         run: |
+          # Optional: if you need stronger static OpenSSL for aarch64-musl builds,
+          # uncomment the env lines below. By default we keep it minimal.
+          # export PKG_CONFIG_ALL_STATIC=1
+          # export OPENSSL_STATIC=1
+          # export OPENSSL_NO_VENDOR=0
+          # export RUSTFLAGS="${RUSTFLAGS} -C target-feature=+crt-static"
           cross build -p codex-cli --release --target ${{ matrix.target }}
 
       - name: Package

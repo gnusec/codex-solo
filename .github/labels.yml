@@ -1,0 +1,75 @@
+# GitHub issue labels baseline. Managed by ghaction-github-labeler.
+# Run automatically via .github/workflows/labels.yml
+
+- name: bug
+  color: d73a4a
+  description: Something isn't working
+
+- name: enhancement
+  color: a2eeef
+  description: New feature or request
+
+- name: documentation
+  color: 0075ca
+  description: Improvements or additions to documentation
+
+- name: chore
+  color: cccccc
+  description: Maintenance tasks
+
+- name: refactor
+  color: fbca04
+  description: Code refactoring without feature changes
+
+- name: tests
+  color: 04d1b2
+  description: Adding or improving tests
+
+- name: ci
+  color: 1d76db
+  description: Continuous Integration and workflows
+
+- name: build
+  color: 5319e7
+  description: Build system or tooling
+
+- name: security
+  color: b60205
+  description: Security-related change or concern
+
+- name: question
+  color: d876e3
+  description: Further information is requested
+
+- name: help wanted
+  color: 008672
+  description: Extra attention is needed
+
+- name: good first issue
+  color: 7057ff
+  description: Good for newcomers
+
+- name: priority: high
+  color: eb6420
+  description: Time-sensitive or critical
+
+- name: priority: medium
+  color: fef2c0
+  description: Important but not urgent
+
+- name: priority: low
+  color: c2e0c6
+  description: Nice to have
+
+- name: status: needs triage
+  color: bfd4f2
+  description: Awaiting initial triage
+
+- name: status: in progress
+  color: 0e8a16
+  description: Work has started
+
+- name: status: blocked
+  color: 5319e7
+  description: Blocked by other work
+
