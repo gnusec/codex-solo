@@ -1,4 +1,10 @@
-وضع SOLO في Codex — دليل سريع
+اللغات: العربية (الحالية) · English · 简体中文 · Español · हिन्दी
+- English: ../docs/README.en.md
+- 简体中文: ../docs/README.zh-CN.md
+- Español: ../docs/README.es.md
+- हिन्दी: ../docs/README.hi.md
+
+# وضع SOLO في Codex — دليل سريع
 
 نظرة عامة
 - يعمل SOLO تلقائيًا حتى تتحقق حالة النجاح.
@@ -19,5 +25,5 @@
 - استخدم `CODEX_SOLO_CONFIG` لملف إعداد مستقل لكل طرفية.
 
 المزيد
-- الدليل المتقدم: `docs/SOLO.ar.md`
-- English: `docs/README.en.md` ؛ 中文: `docs/README.zh-CN.md`
+- الدليل المتقدم: ../docs/SOLO.ar.md
+- English: ../docs/README.en.md ؛ 中文: ../docs/README.zh-CN.md

@@ -1,15 +1,18 @@
-入群 / Discussions: https://github.com/gnusec/codex-solo/discussions
+![Codex SOLO](assets/banner.svg)
 
-语言 / Languages:
-- 简体中文 (当前)
+发布下载（最新）：https://github.com/gnusec/codex-solo/releases
+入群 / Discussions：https://github.com/gnusec/codex-solo/discussions
+
+语言 / Languages：简体中文（当前） · English · Español · العربية · हिन्दी
 - English: docs/README.en.md
 - Español: docs/README.es.md
 - العربية: docs/README.ar.md
 - हिन्दी: docs/README.hi.md
 
-# Codex SOLO Mode (vendored)
+# Codex SOLO
 
-一个极简 README，去掉花哨 ASCII。SOLO 会自动连续工作，直到“成功检查”通过。
+Slogan：独闯天涯，凭证为王；不靠嘴，靠退出码。
+作用：自动连击执行，直到“成功检查”以 0 退出码通过，才算完成。
 
 ## Quick Start
 - 构建：`cd vendor/codex/codex-rs && cargo build -p codex-cli --release`
@@ -40,12 +43,12 @@
 - `interval_seconds`：自动继续之间的延迟
 
 ## Downloads
-- Releases：https://github.com/gnusec/codex-solo/releases
+- 最新发布与校验和：https://github.com/gnusec/codex-solo/releases
 
 ## Docs
-- 多语言上手：`docs/README.*.md`
-- SOLO 深入：`docs/SOLO.*.md`
-- 路线图：`docs/ROADMAP.md`
+- 多语言上手：docs/README.en.md · docs/README.zh-CN.md · docs/README.es.md · docs/README.ar.md · docs/README.hi.md
+- 深入原理：docs/SOLO.en.md · docs/SOLO.zh-CN.md · docs/SOLO.es.md · docs/SOLO.ar.md · docs/SOLO.hi.md
+- 路线图：docs/ROADMAP.md
 
 ## License
 见 `LICENSE`
