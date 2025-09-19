@@ -85,15 +85,25 @@ jobs:
             -fill '#58a6ff' -annotate +40+70 '$ codex' \
             -fill '#c9d1d9' -annotate +40+100 '/solo enabled ✓   interval=30s   exit_on_success=true' \
             .work/real/r6.png
+          # Show config: cat .codex-solo.json
+          convert "$BASE" -gravity NorthWest -font "$FONT" -pointsize 18 \
+            -fill '#58a6ff' -annotate +40+70 '$ cat .codex-solo.json' \
+            -fill '#8b949e' -annotate +40+102 '{' \
+            -fill '#c9d1d9' -annotate +54+124 '"success_cmd": ["pytest", "-q"],' \
+            -fill '#c9d1d9' -annotate +54+146 '"continue_prompt": "继续",' \
+            -fill '#c9d1d9' -annotate +54+168 '"exit_on_success": true,' \
+            -fill '#c9d1d9' -annotate +54+190 '"interval_seconds": 30' \
+            -fill '#8b949e' -annotate +40+212 '}' \
+            .work/real/r7.png
           convert "$BASE" -gravity NorthWest -font "$FONT" -pointsize 18 \
             -fill '#c9d1d9' -annotate +40+100 'success_cmd: pytest -q' \
             -fill '#d29922' -annotate +300+100 '→ exit=1' \
-            .work/real/r7.png
+            .work/real/r8.png
           convert "$BASE" -gravity NorthWest -font "$FONT" -pointsize 18 \
             -fill '#c9d1d9' -annotate +40+100 'success_cmd: pytest -q' \
             -fill '#3fb950' -annotate +300+100 '→ exit=0' \
             -fill '#3fb950' -annotate +40+130 'SUCCESS proof: exit code 0 — exiting' \
-            .work/real/r8.png
+            .work/real/r9.png
 
       - name: Assemble real typing GIF (alt)
         run: |
@@ -106,8 +116,9 @@ jobs:
             -delay 60  .work/real/r4.png \
             -delay 100 .work/real/r5.png \
             -delay 120 .work/real/r6.png \
-            -delay 90  .work/real/r7.png \
-            -delay 140 .work/real/r8.png \
+            -delay 120 .work/real/r7.png \
+            -delay 90  .work/real/r8.png \
+            -delay 140 .work/real/r9.png \
             -colors 128 -dither FloydSteinberg -layers Optimize \
             assets/tui-demo-real.gif
           identify assets/tui-demo-real.gif || true
