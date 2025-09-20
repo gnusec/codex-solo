@@ -12,6 +12,11 @@
 - Help Wanted: https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
 - Show & Tell: https://github.com/gnusec/codex-solo/discussions/9
 
+وسائل التواصل
+- الاسم: 耘峥
+- البريد الإلكتروني: huangdeng@safe87.com
+- WeChat: gnusec
+
 نظرة وظيفية
 - يستمر تلقائيًا حتى تمرّ فحوصات النجاح
 - فحوصات قابلة للبرمجة: خروج 0 للأوامر/السكربت، نجاح الاختبارات، مطابقة ملف/مخرجات

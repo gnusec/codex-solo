@@ -20,6 +20,11 @@
 语言 / Languages
 - [简体中文](docs/README.zh-CN.md) · [English](docs/README.en.md) · [Español](docs/README.es.md) · [العربية](docs/README.ar.md) · [हिन्दी](docs/README.hi.md)
 - Show & Tell（演示与成果）：https://github.com/gnusec/codex-solo/discussions/9
+
+联系 / Contact
+- 名称：耘峥
+- Email：huangdeng@safe87.com
+- WeChat：gnusec
 ## Quick Demo
 ![TUI Demo (GIF)](assets/tui-demo-real.gif)
 

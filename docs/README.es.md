@@ -12,6 +12,11 @@ Enlaces rápidos
 - Help Wanted: https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
 - Show & Tell: https://github.com/gnusec/codex-solo/discussions/9
 
+Contacto
+- Nombre: 耘峥
+- Email: huangdeng@safe87.com
+- WeChat: gnusec
+
 Descripción funcional
 - Avanza automáticamente hasta que las comprobaciones de éxito se cumplan
 - Comprobaciones scriptables: salida 0 de comando/script, tests en verde, coincidencia de archivo/salida

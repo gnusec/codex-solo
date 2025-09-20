@@ -12,6 +12,11 @@ Quick links
 - Help Wanted: https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
 - Show & Tell: https://github.com/gnusec/codex-solo/discussions/9
 
+Contact
+- Name: 耘峥
+- Email: huangdeng@safe87.com
+- WeChat: gnusec
+
 Functional overview
 - Automatically continues until success checks pass
 - Scriptable checks: command/script exit 0, tests green, file/output match

@@ -12,6 +12,11 @@
 - Help Wanted: https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
 - Show & Tell: https://github.com/gnusec/codex-solo/discussions/9
 
+संपर्क (Contact)
+- नाम: 耘峥
+- ईमेल: huangdeng@safe87.com
+- WeChat: gnusec
+
 कार्यात्मक सार
 - सफलता जाँच पास होने तक स्वचालित रूप से जारी रहता है
 - Scriptable जाँच: कमांड/स्क्रिप्ट exit 0, सभी परीक्षण पास, फ़ाइल/आउटपुट मिलान

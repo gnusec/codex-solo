@@ -12,6 +12,11 @@
 - Help Wanted：https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
 - Show & Tell（演示与成果）：https://github.com/gnusec/codex-solo/discussions/9
 
+联系方式
+- 名称：耘峥
+- Email：huangdeng@safe87.com
+- WeChat：gnusec
+
 功能概述
 - 自动连续推进直到“成功检查”通过
 - 成功检查可脚本化：命令/脚本退出码 0、测试全绿、文件/输出匹配
