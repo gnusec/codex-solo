@@ -16,3 +16,14 @@ git push -u origin demo/pr-checks
 - 把占位步骤换成你的真实测试/Lint 或 AI 评审 CLI
 - 可用 `actions/github-script` 生成更丰富的总结或注解
 
+可选 SOLO 配置（本地 A）
+```json
+{
+  "done_token": "",
+  "kickoff_prompt": "实现并发起 PR；当 B 给出完成信号后退出。",
+  "continue_prompt": "持续迭代，直到 B 的检查通过。",
+  "success_sh": "test -f mailbox/done_by_b.flag",
+  "interval_seconds": 20,
+  "exit_on_success": true
+}
+```

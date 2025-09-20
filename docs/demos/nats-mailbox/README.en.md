@@ -18,3 +18,14 @@ Notes
 - Install the CLI: https://github.com/nats-io/natscli
 - For durability, consider JetStream (streams/consumers)
 
+Recommended SOLO config (A)
+```json
+{
+  "done_token": "",
+  "kickoff_prompt": "Implement tasks. A small bridge writes mailbox/done_by_b.flag when NATS receives done_by_b.",
+  "continue_prompt": "Keep going until done flag exists.",
+  "success_sh": "test -f mailbox/done_by_b.flag",
+  "interval_seconds": 20,
+  "exit_on_success": true
+}
+```

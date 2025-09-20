@@ -16,3 +16,14 @@ git push -u origin demo/pr
 - 可结合“duet/a” 分支：由 A 打 PR，而该工作流扮演 B
 - 可将评审输出上传为 artifacts，并在评论里附链接
 
+可选 SOLO 配置（本地 A）
+```json
+{
+  "done_token": "",
+  "kickoff_prompt": "实现并发起 PR；等待 B 评审信号。",
+  "continue_prompt": "持续完善，直到 B 确认。",
+  "success_sh": "test -f mailbox/done_by_b.flag",
+  "interval_seconds": 20,
+  "exit_on_success": true
+}
+```

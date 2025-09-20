@@ -19,3 +19,14 @@ MAILBOX_DB=mailbox.db python3 scripts/db-mailbox/read_status.py b_to_a
 - DuckDB 也可类似使用
 - 离线/并协友好可考虑 CRDT（例如 Automerge）
 
+推荐 SOLO 配置（A）
+```json
+{
+  "done_token": "",
+  "kickoff_prompt": "推进实现；当 DB 状态指示 B 完成时退出。",
+  "continue_prompt": "持续推进，直到 done 状态为 1。",
+  "success_sh": "MAILBOX_DB=mailbox.db python3 scripts/db-mailbox/read_status.py done_by_b | grep -q '^1$'",
+  "interval_seconds": 20,
+  "exit_on_success": true
+}
+```

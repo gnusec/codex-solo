@@ -16,3 +16,14 @@ Replace with real checks
 - Swap the placeholder step for your real tests/lints or an AI reviewer CLI
 - You can parse logs and attach a richer summary or annotations via `actions/github-script`
 
+Optional SOLO config (local A)
+```json
+{
+  "done_token": "",
+  "kickoff_prompt": "Implement and open a PR. Exit when B signals done.",
+  "continue_prompt": "Keep iterating until B's checks pass.",
+  "success_sh": "test -f mailbox/done_by_b.flag",
+  "interval_seconds": 20,
+  "exit_on_success": true
+}
+```

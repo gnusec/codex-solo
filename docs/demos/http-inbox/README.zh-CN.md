@@ -26,3 +26,14 @@ curl -sS -X POST http://127.0.0.1:8787/inbox \
 - 用隧道（cloudflared/ngrok）暴露 `http://127.0.0.1:8787`
 - 新建仓库 Webhook（push/PR），通知你的 inbox 触发本地/远端 B
 
+推荐 SOLO 配置（A）
+```json
+{
+  "done_token": "",
+  "kickoff_prompt": "推进实现并在 mailbox/a_to_b.txt 记录要点；等待 B 通过 HTTP 标记完成。",
+  "continue_prompt": "持续推进，直到存在 done_by_b.flag。",
+  "success_sh": "test -f mailbox/done_by_b.flag",
+  "interval_seconds": 20,
+  "exit_on_success": true
+}
+```

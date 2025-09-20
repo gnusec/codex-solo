@@ -26,3 +26,14 @@ KEY_PREFIX=proj1/ ./scripts/s3-mailbox/poll.sh
 - 用 AWS S3 时去掉 `AWS_ENDPOINT_URL`
 - 可附带 JSON 元数据并在对端解析
 
+推荐 SOLO 配置（A）
+```json
+{
+  "done_token": "",
+  "kickoff_prompt": "推进实现；B 通过 S3 写入完成信号后退出。",
+  "continue_prompt": "轮询 S3 直到出现完成 flag。",
+  "success_sh": "aws s3 ls s3://$BUCKET/${KEY_PREFIX:-mailbox/}done_by_b.flag >/dev/null 2>&1",
+  "interval_seconds": 30,
+  "exit_on_success": true
+}
+```
