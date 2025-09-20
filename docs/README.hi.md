@@ -8,6 +8,7 @@
 - डिस्कशंस: https://github.com/gnusec/codex-solo/discussions
 - कॉन्ट्रिब्यूट: ../CONTRIBUTING.md
 - रोडमैप: ROADMAP.md
+- आर्किटेक्चर और डिज़ाइन: architecture/README.en.md
 - Good First Issues: https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
 - Help Wanted: https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
 - Show & Tell: https://github.com/gnusec/codex-solo/discussions/9

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520" role="img" aria-label="Codex SOLO Architecture">
+  <defs>
+    <style>
+      .bg { fill: #0b0f14; }
+      .panel { fill: #111a33; stroke: #1f2b4d; stroke-width: 2; rx: 10; }
+      .title { font: 700 16px Inter, system-ui, -apple-system, Segoe UI, Roboto; fill: #c9d1d9; }
+      .text { font: 13px Inter, system-ui, -apple-system, Segoe UI, Roboto; fill: #9fb0bf; }
+      .mono { font: 12px SFMono-Regular, Consolas, Menlo, monospace; fill: #a8b3c7; }
+      .link { fill: none; stroke: #3aa1ff; stroke-width: 2; stroke-dasharray: 6 6; marker-end: url(#arrow); }
+      .ok { fill: #3fb950; }
+      .warn { fill: #d29922; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L10,3 L0,6 z" fill="#3aa1ff" />
+    </marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="980" height="520"/>
+
+  <!-- User / TUI -->
+  <rect class="panel" x="40" y="40" width="270" height="140"/>
+  <text class="title" x="60" y="68">User · Codex TUI (vendor)</text>
+  <text class="mono" x="60" y="96">/solo  · toggle SOLO mode</text>
+  <text class="mono" x="60" y="116">CODEX_SOLO_AUTOSTART=1</text>
+  <text class="mono" x="60" y="136">CODEX_SOLO_CONFIG=./solo.json</text>
+
+  <!-- SOLO Controller -->
+  <rect class="panel" x="360" y="40" width="260" height="200"/>
+  <text class="title" x="380" y="68">SOLO Controller</text>
+  <text class="text" x="380" y="96">Auto-continue loop</text>
+  <text class="mono" x="380" y="116">continue_prompt</text>
+  <text class="mono" x="380" y="136">interval_seconds</text>
+  <text class="mono" x="380" y="156">exit_on_success</text>
+
+  <!-- Success Checker -->
+  <rect class="panel" x="660" y="40" width="280" height="200"/>
+  <text class="title" x="680" y="68">Success Checker</text>
+  <text class="mono" x="680" y="96">done_token</text>
+  <text class="mono" x="680" y="116">success_cmd  (exit 0)</text>
+  <text class="mono" x="680" y="136">success_sh   (exit 0)</text>
+  <text class="text" x="680" y="164">External proof (tests, files, output)</text>
+
+  <!-- Config -->
+  <rect class="panel" x="40" y="210" width="270" height="120"/>
+  <text class="title" x="60" y="238">SOLO Config</text>
+  <text class="mono" x="60" y="266">.codex-solo.json</text>
+  <text class="mono" x="60" y="286">or $CODEX_SOLO_CONFIG</text>
+
+  <!-- Multi-instance (Runner/Judge) -->
+  <rect class="panel" x="40" y="360" width="420" height="120"/>
+  <text class="title" x="60" y="388">Multi-instance (A/B)</text>
+  <text class="mono" x="60" y="416">Runner: success_sh: test -f FINISH.txt</text>
+  <text class="mono" x="60" y="436">Judge: writes FINISH.txt · optional exit</text>
+
+  <!-- CI / Headless -->
+  <rect class="panel" x="500" y="360" width="440" height="120"/>
+  <text class="title" x="520" y="388">Headless · CI</text>
+  <text class="mono" x="520" y="416">script -q -e -c ./codex</text>
+  <text class="mono" x="520" y="436">Autostart + scriptable checks</text>
+
+  <!-- Links -->
+  <path class="link" d="M310,110 C340,110 340,110 360,110"/>
+  <path class="link" d="M620,110 C640,110 640,110 660,110"/>
+  <path class="link" d="M175,210 C175,190 220,180 360,170"/>
+  <path class="link" d="M220,360 C260,360 300,240 360,220"/>
+  <path class="link" d="M620,220 C740,300 760,320 760,360"/>
+
+  <!-- Legend -->
+  <circle class="ok" cx="40" cy="500" r="6"/><text class="text" x="54" y="504">Exit 0 → success</text>
+  <circle class="warn" cx="200" cy="500" r="6"/><text class="text" x="214" y="504">Non-zero → keep iterating</text>
+</svg>

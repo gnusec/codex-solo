@@ -70,6 +70,7 @@
  - CI 无头模式（实验）：[docs/HEADLESS_CI.md](docs/HEADLESS_CI.md)
  - 贡献指南：[CONTRIBUTING.md](CONTRIBUTING.md)
  - 社区指南：[docs/COMMUNITY.md](docs/COMMUNITY.md)
+ - 架构与设计：中文 [docs/architecture/README.zh-CN.md](docs/architecture/README.zh-CN.md) · English [docs/architecture/README.en.md](docs/architecture/README.en.md)
 
 录制与更新演示（可选）：[docs/DEMO_CAPTURE.md](docs/DEMO_CAPTURE.md)
 

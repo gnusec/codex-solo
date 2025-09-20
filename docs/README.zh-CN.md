@@ -8,6 +8,7 @@
 - 入群 / Discussions：https://github.com/gnusec/codex-solo/discussions
 - 贡献（Contribute）：../CONTRIBUTING.md
 - 路线图（Roadmap）：ROADMAP.md
+- 架构与设计：architecture/README.zh-CN.md
 - Good First Issues：https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
 - Help Wanted：https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
 - Show & Tell（演示与成果）：https://github.com/gnusec/codex-solo/discussions/9
