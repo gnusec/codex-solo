@@ -8,6 +8,7 @@ Enlaces rápidos
 - Debates (Discussions): https://github.com/gnusec/codex-solo/discussions
 - Contribuir: ../CONTRIBUTING.md
 - Hoja de ruta: ROADMAP.md
+ - TODO: ../TODO.md
 - Arquitectura y diseño: architecture/README.es.md
 - Demos (Dueto): docs/demos/README.es.md · Buzón Git · Revisión PR
   - Buzón Git: docs/demos/git-mailbox/README.es.md

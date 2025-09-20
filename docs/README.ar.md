@@ -8,6 +8,7 @@
 - المناقشات: https://github.com/gnusec/codex-solo/discussions
 - المساهمة: ../CONTRIBUTING.md
 - خارطة الطريق: ROADMAP.md
+ - TODO: ../TODO.md
 - البنية والتصميم: architecture/README.ar.md
 - العروض التوضيحية (Duet): docs/demos/README.ar.md · صندوق Git · مراجعة PR
   - صندوق Git: docs/demos/git-mailbox/README.ar.md

@@ -9,6 +9,7 @@
 - 贡献（Contribute）：../CONTRIBUTING.md
 - 路线图（Roadmap）：ROADMAP.md
 - 架构与设计：architecture/README.zh-CN.md
+ - TODO 列表：../TODO.md
 - 协作演示（Duet）：docs/demos/README.zh-CN.md · Git 信箱 · PR 评审
   - Git 信箱：docs/demos/git-mailbox/README.en.md
   - PR 评审 Demo：docs/demos/pr-review/README.en.md

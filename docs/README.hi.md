@@ -8,6 +8,7 @@
 - डिस्कशंस: https://github.com/gnusec/codex-solo/discussions
 - कॉन्ट्रिब्यूट: ../CONTRIBUTING.md
 - रोडमैप: ROADMAP.md
+ - TODO: ../TODO.md
 - आर्किटेक्चर और डिज़ाइन: architecture/README.hi.md
 - डेमो (Duet): docs/demos/README.hi.md · Git मेलबॉक्स · PR रिव्यू
   - Git मेलबॉक्स: docs/demos/git-mailbox/README.hi.md

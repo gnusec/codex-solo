@@ -70,6 +70,7 @@
  - CI 无头模式（实验）：[docs/HEADLESS_CI.md](docs/HEADLESS_CI.md)
  - 贡献指南：[CONTRIBUTING.md](CONTRIBUTING.md)
  - 社区指南：[docs/COMMUNITY.md](docs/COMMUNITY.md)
+  - TODO 列表：[TODO.md](TODO.md)
   - 协作演示（Duet）：
     - 文件信箱：docs/demos/README.zh-CN.md
     - Git 信箱：docs/demos/git-mailbox/README.en.md
