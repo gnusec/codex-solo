@@ -110,15 +110,15 @@ jobs:
           set -euo pipefail
           convert \
             -loop 0 \
-            -delay 60  .work/real/r1.png \
-            -delay 60  .work/real/r2.png \
-            -delay 60  .work/real/r3.png \
-            -delay 60  .work/real/r4.png \
-            -delay 100 .work/real/r5.png \
-            -delay 120 .work/real/r6.png \
-            -delay 120 .work/real/r7.png \
-            -delay 90  .work/real/r8.png \
-            -delay 140 .work/real/r9.png \
+            -delay 90  .work/real/r1.png \
+            -delay 90  .work/real/r2.png \
+            -delay 90  .work/real/r3.png \
+            -delay 90  .work/real/r4.png \
+            -delay 130 .work/real/r5.png \
+            -delay 160 .work/real/r6.png \
+            -delay 160 .work/real/r7.png \
+            -delay 120 .work/real/r8.png \
+            -delay 200 .work/real/r9.png \
             -colors 128 -dither FloydSteinberg -layers Optimize \
             assets/tui-demo-real.gif
           identify assets/tui-demo-real.gif || true

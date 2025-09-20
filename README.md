@@ -21,7 +21,7 @@
 - [简体中文](docs/README.zh-CN.md) · [English](docs/README.en.md) · [Español](docs/README.es.md) · [العربية](docs/README.ar.md) · [हिन्दी](docs/README.hi.md)
 - Show & Tell（演示与成果）：https://github.com/gnusec/codex-solo/discussions/9
 ## Quick Demo
-![TUI Demo (GIF)](assets/tui-demo.gif)
+![TUI Demo (GIF)](assets/tui-demo-real.gif)
 
 静态备选（若 GIF 未显示）：[assets/demo.svg](assets/demo.svg)
 
