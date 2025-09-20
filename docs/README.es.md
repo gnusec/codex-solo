@@ -8,7 +8,7 @@ Enlaces rápidos
 - Debates (Discussions): https://github.com/gnusec/codex-solo/discussions
 - Contribuir: ../CONTRIBUTING.md
 - Hoja de ruta: ROADMAP.md
-- Arquitectura y diseño: architecture/README.en.md
+- Arquitectura y diseño: architecture/README.es.md
 - Good First Issues: https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
 - Help Wanted: https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
 - Show & Tell: https://github.com/gnusec/codex-solo/discussions/9

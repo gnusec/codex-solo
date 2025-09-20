@@ -4,7 +4,7 @@
 本文介绍在本仓库中如何“二次开发”：在上游 Codex 的基础上，以较小改动实现实用的 SOLO 能力，并说明成功校验与 CI/无头用法。
 
 架构图
-![Architecture](../assets/architecture.svg)
+![Architecture](../../assets/architecture.svg)
 
 目标
 - 尽量减少对上游的偏离（vendor 代码；避免侵入式修改）
@@ -34,4 +34,3 @@
 可扩展性
 - 可新增校验配方（如 JSONPath、HTTP 检查等）
 - CI 场景可下载发布好的 `codex` 二进制，便于自托管流水线
-

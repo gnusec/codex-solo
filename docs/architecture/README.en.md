@@ -4,7 +4,7 @@ Architecture & Design
 This document explains how this repo vendors Codex and layers a practical SOLO mode on top, plus how success checks and CI/headless use work.
 
 Diagram
-![Architecture](../assets/architecture.svg)
+![Architecture](../../assets/architecture.svg)
 
 Goals
 - Keep upstream drift minimal (vendor Codex; avoid intrusive changes)
@@ -34,4 +34,3 @@ Design Notes
 Extensibility
 - New check recipes can be added (e.g., JSONPath match, HTTP checks)
 - CI examples can download a released `codex` binary for self‑hosted jobs
-
