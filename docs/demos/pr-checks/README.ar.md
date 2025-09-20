@@ -16,3 +16,14 @@ git push -u origin demo/pr-checks
 - بدّل خطوة المثال باختبارات/linters أو CLI للذكاء الاصطناعي
 - استخدم `actions/github-script` لمُلخصات/تعليقات أكثر ثراءً
 
+تهيئة SOLO (A محليًا اختيارية)
+```json
+{
+  "done_token": "",
+  "kickoff_prompt": "نفّذ وافتح PR؛ اخرج عند إشارة B بالانتهاء.",
+  "continue_prompt": "واصل حتى تمرّ فحوص B.",
+  "success_sh": "test -f mailbox/done_by_b.flag",
+  "interval_seconds": 20,
+  "exit_on_success": true
+}
+```

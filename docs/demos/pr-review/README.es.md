@@ -16,3 +16,14 @@ Consejos
 - Combina con `duet/a`: A abre PR y este workflow actúa como B
 - Sube informes como artifacts y enlázalos en el comentario
 
+SOLO opcional (A local)
+```json
+{
+  "done_token": "",
+  "kickoff_prompt": "Implementa y abre un PR; espera la señal de B.",
+  "continue_prompt": "Itera hasta que B confirme.",
+  "success_sh": "test -f mailbox/done_by_b.flag",
+  "interval_seconds": 20,
+  "exit_on_success": true
+}
+```

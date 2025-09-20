@@ -16,3 +16,14 @@ Sustituir por verificaciones reales
 - Cambia el paso de ejemplo por tus tests/lints o un CLI de IA
 - Puedes generar resúmenes/annotaciones más ricos con `actions/github-script`
 
+SOLO opcional (A local)
+```json
+{
+  "done_token": "",
+  "kickoff_prompt": "Implementa y abre PR; sal cuando B señale terminado.",
+  "continue_prompt": "Itera hasta que pasen los checks de B.",
+  "success_sh": "test -f mailbox/done_by_b.flag",
+  "interval_seconds": 20,
+  "exit_on_success": true
+}
+```

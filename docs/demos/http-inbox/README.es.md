@@ -26,3 +26,14 @@ Webhooks de GitHub
 - Usa un túnel (cloudflared/ngrok) para exponer `http://127.0.0.1:8787`
 - Configura un webhook de GitHub (push/PR) para notificar tu inbox
 
+SOLO recomendado (A)
+```json
+{
+  "done_token": "",
+  "kickoff_prompt": "Implementar y registrar en mailbox/a_to_b.txt; esperar que B marque done por HTTP.",
+  "continue_prompt": "Seguir hasta que exista done_by_b.flag.",
+  "success_sh": "test -f mailbox/done_by_b.flag",
+  "interval_seconds": 20,
+  "exit_on_success": true
+}
+```

@@ -26,3 +26,14 @@ Notas
 - En AWS S3 omite `AWS_ENDPOINT_URL`
 - Puedes adjuntar metadatos JSON y parsearlos en el receptor
 
+SOLO recomendado (A)
+```json
+{
+  "done_token": "",
+  "kickoff_prompt": "Implementar; salir cuando B suba la señal a S3.",
+  "continue_prompt": "Sondear hasta que exista el flag en S3.",
+  "success_sh": "aws s3 ls s3://$BUCKET/${KEY_PREFIX:-mailbox/}done_by_b.flag >/dev/null 2>&1",
+  "interval_seconds": 30,
+  "exit_on_success": true
+}
+```

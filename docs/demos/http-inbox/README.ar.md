@@ -26,3 +26,14 @@ Webhooks (GitHub)
 - استخدم نفقًا (cloudflared/ngrok) لكشف `http://127.0.0.1:8787`
 - أضف Webhook (push/PR) لإشعار الخادم
 
+تهيئة SOLO (A موصى بها)
+```json
+{
+  "done_token": "",
+  "kickoff_prompt": "نفّذ وسجّل في mailbox/a_to_b.txt؛ انتظر أن يرسل B إشارة done عبر HTTP.",
+  "continue_prompt": "واصل حتى يوجد done_by_b.flag.",
+  "success_sh": "test -f mailbox/done_by_b.flag",
+  "interval_seconds": 20,
+  "exit_on_success": true
+}
+```

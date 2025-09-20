@@ -16,3 +16,14 @@ git push -u origin demo/pr
 - اجمعها مع `duet/a`: يفتح A طلب الدمج وهذا workflow يعمل كمحرك B
 - ارفع تقارير كمصنوعات (artifacts) وأرفق رابطًا في التعليق
 
+تهيئة SOLO (A محليًا اختيارية)
+```json
+{
+  "done_token": "",
+  "kickoff_prompt": "نفّذ وافتح PR؛ انتظر إشارة B.",
+  "continue_prompt": "واصل حتى يؤكد B.",
+  "success_sh": "test -f mailbox/done_by_b.flag",
+  "interval_seconds": 20,
+  "exit_on_success": true
+}
+```
