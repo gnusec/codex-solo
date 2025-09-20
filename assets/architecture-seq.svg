@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="540" viewBox="0 0 980 540" role="img" aria-label="Codex SOLO Sequence">
+  <defs>
+    <style>
+      .bg { fill: #0b0f14; }
+      .lane { fill: #0f1526; stroke: #1f2b4d; stroke-width: 2; }
+      .title { font: 600 14px Inter, system-ui, -apple-system, Segoe UI, Roboto; fill: #a8b3c7; }
+      .step { fill: #111a33; stroke: #1f2b4d; stroke-width: 2; rx: 8; }
+      .txt { font: 12px Inter, system-ui, -apple-system, Segoe UI, Roboto; fill: #c9d1d9; }
+      .mono{ font: 12px SFMono-Regular,Consolas,Menlo,monospace; fill:#9fb0bf; }
+      .arrow{ stroke:#3aa1ff; stroke-width:2; marker-end:url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L10,3 L0,6 z" fill="#3aa1ff" />
+    </marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="980" height="540"/>
+
+  <!-- Swimlanes -->
+  <rect class="lane" x="40" y="40" width="200" height="460"/>
+  <text class="title" x="60" y="60">User / TUI</text>
+  <rect class="lane" x="260" y="40" width="220" height="460"/>
+  <text class="title" x="280" y="60">SOLO Controller</text>
+  <rect class="lane" x="500" y="40" width="220" height="460"/>
+  <text class="title" x="520" y="60">Success Checker</text>
+  <rect class="lane" x="740" y="40" width="200" height="460"/>
+  <text class="title" x="760" y="60">External Proof</text>
+
+  <!-- Steps -->
+  <rect class="step" x="60" y="90" width="160" height="44"/>
+  <text class="txt" x="70" y="115">/solo  (or autostart)</text>
+
+  <rect class="step" x="280" y="150" width="180" height="52"/>
+  <text class="txt" x="290" y="175">send continue_prompt</text>
+  <text class="mono" x="290" y="192">interval_seconds</text>
+
+  <rect class="step" x="520" y="220" width="180" height="64"/>
+  <text class="txt" x="530" y="245">check success</text>
+  <text class="mono" x="530" y="262">done_token | success_cmd | success_sh</text>
+
+  <rect class="step" x="760" y="300" width="160" height="54"/>
+  <text class="txt" x="770" y="325">tests / files / output</text>
+  <text class="mono" x="770" y="342">exit 0 → success</text>
+
+  <rect class="step" x="280" y="400" width="180" height="44"/>
+  <text class="txt" x="290" y="426">exit_on_success (optional)</text>
+
+  <!-- Arrows -->
+  <path class="arrow" d="M220,112 L280,112"/>
+  <path class="arrow" d="M370,202 L370,220"/>
+  <path class="arrow" d="M700,252 L740,252 L740,327"/>
+  <path class="arrow" d="M840,300 L840,200 L700,200"/>
+  <path class="arrow" d="M520,252 L460,252 L460,400 L520,400"/>
+  <path class="arrow" d="M460,422 L280,422"/>
+
+  <!-- Captions -->
+  <text class="mono" x="520" y="485">loop until success</text>
+</svg>

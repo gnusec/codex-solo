@@ -6,6 +6,9 @@
 डायग्राम
 ![Architecture](../../assets/architecture.svg)
 
+सीक्वेंस (Sequence)
+![Sequence](../../assets/architecture-seq.svg)
+
 लक्ष्य
 - अपस्ट्रीम से न्यूनतम डिफ (vendor; घुसपैठ वाले बदलाव नहीं)
 - अनुमान के बजाय लूप के साथ स्वचालित प्रगति
@@ -17,7 +20,7 @@
 - सफलता जाँच: `done_token` या scriptable `success_cmd` / `success_sh` (exit 0)
 - कॉन्फ़िग लोडर: `.codex-solo.json` या `CODEX_SOLO_CONFIG`
 - मल्टी‑इंस्टेंस A/B: Runner (प्रमाण देखे) / Judge (प्रमाण लिखे)
-- हेडलेस/CI: pseudo‑TTY + autostart + scriptable जाँच
+- हेडलेस/CI (निरंतर एकीकरण): छद्म‑टर्मिनल (pseudo‑TTY) + autostart + scriptable जाँच
 
 डेटा फ्लो
 1) उपयोगकर्ता TUI में `/solo` से सक्रिय करे या env/फाइल से autostart
@@ -29,9 +32,8 @@
 - सटीक प्रमाण हेतु `success_sh` को प्राथमिकता दें (रिपोर्ट grep, JSON/फाइल जाँच)
 - `done_token` को खाली स्ट्रिंग करने से उसे निष्क्रिय किया जा सकता है
 - A/B में अलग `CODEX_SOLO_CONFIG` से कॉन्फ़िग अलग रखें
-- हेडलेस में लॉग संक्षिप्त रखें; जाँच छोटी और सटीक
+- हेडलेस में लॉग संक्षिप्त रखें; जाँच छोटी और सटीक (अनावश्यक शोर न हो)
 
 विस्तार
 - नई जाँच रेसिपी (जैसे JSONPath, HTTP checks)
 - CI में रिलीज़ से `codex` बायनरी डाउनलोड कर सकते हैं
-

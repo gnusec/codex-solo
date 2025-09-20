@@ -6,6 +6,9 @@
 架构图
 ![Architecture](../../assets/architecture.svg)
 
+时序图
+![Sequence](../../assets/architecture-seq.svg)
+
 目标
 - 尽量减少对上游的偏离（vendor 代码；避免侵入式修改）
 - 以循环自动推进，而不是靠人工猜测

@@ -6,6 +6,9 @@ Este documento explica cómo este repositorio hace vendor de Codex y añade un m
 Diagrama
 ![Arquitectura](../../assets/architecture.svg)
 
+Secuencia
+![Secuencia](../../assets/architecture-seq.svg)
+
 Objetivos
 - Mantener al mínimo la desviación respecto a upstream (vendor de Codex; evitar cambios intrusivos)
 - Automatizar el avance con un bucle (no con adivinanzas)
@@ -17,7 +20,7 @@ Componentes
 - Comprobador de éxito: `done_token` o comprobaciones scriptables vía `success_cmd` / `success_sh` (exit 0)
 - Cargador de Config: `.codex-solo.json` o `CODEX_SOLO_CONFIG`
 - Multi‑instancia A/B: Runner (vigila la prueba) y Judge (produce la prueba)
-- Headless/CI: pseudo‑TTY + autostart + comprobaciones scriptables
+- Headless/CI (Integración Continua): seudo‑TTY (pseudoterminal) + autostart + comprobaciones scriptables
 
 Flujo de datos
 1) El usuario activa SOLO en la TUI (`/solo`) o autoinicia vía env/archivo
@@ -29,9 +32,8 @@ Notas de diseño
 - Preferir `success_sh` para pruebas precisas (grep del reporte, comprobar JSON/fichero)
 - `done_token` puede desactivarse estableciéndolo a cadena vacía
 - Multi‑instancia A/B: usar distintos `CODEX_SOLO_CONFIG` para desacoplar configs
-- Headless: logs compactos; comprobaciones cortas y precisas
+- Headless: logs compactos; comprobaciones cortas y precisas (evitar ruido)
 
 Extensibilidad
 - Añadir recetas de comprobación (p.ej., JSONPath, checks HTTP)
 - En CI se puede descargar el binario publicado de `codex`
-

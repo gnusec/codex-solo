@@ -6,6 +6,9 @@ This document explains how this repo vendors Codex and layers a practical SOLO m
 Diagram
 ![Architecture](../../assets/architecture.svg)
 
+Sequence
+![Sequence](../../assets/architecture-seq.svg)
+
 Goals
 - Keep upstream drift minimal (vendor Codex; avoid intrusive changes)
 - Automate progress with a loop, not with guesswork
