@@ -9,15 +9,15 @@ Enlaces rápidos
 - Contribuir: ../CONTRIBUTING.md
 - Hoja de ruta: ROADMAP.md
 - Arquitectura y diseño: architecture/README.es.md
-- Demos (Dueto): docs/demos/README.en.md · Buzón Git · Revisión PR
-  - Buzón Git: docs/demos/git-mailbox/README.en.md
-  - Revisión PR: docs/demos/pr-review/README.en.md
-  - HTTP Inbox: docs/demos/http-inbox/README.en.md
-  - Buzón S3/MinIO: docs/demos/s3-mailbox/README.en.md
-  - Buzón SQLite: docs/demos/db-mailbox/README.en.md
-  - Buzón Redis: docs/demos/redis-mailbox/README.en.md
-  - Buzón NATS: docs/demos/nats-mailbox/README.en.md
-  - Buzón Slack: docs/demos/slack-mailbox/README.en.md
+- Demos (Dueto): docs/demos/README.es.md · Buzón Git · Revisión PR
+  - Buzón Git: docs/demos/git-mailbox/README.es.md
+  - Revisión PR: docs/demos/pr-review/README.es.md
+  - HTTP Inbox: docs/demos/http-inbox/README.es.md
+  - Buzón S3/MinIO: docs/demos/s3-mailbox/README.es.md
+  - Buzón SQLite: docs/demos/db-mailbox/README.es.md
+  - Buzón Redis: docs/demos/redis-mailbox/README.es.md
+  - Buzón NATS: docs/demos/nats-mailbox/README.es.md
+  - Buzón Slack: docs/demos/slack-mailbox/README.es.md
 - Good First Issues: https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
 - Help Wanted: https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
 - Show & Tell: https://github.com/gnusec/codex-solo/discussions/9

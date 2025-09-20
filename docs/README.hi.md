@@ -9,15 +9,15 @@
 - कॉन्ट्रिब्यूट: ../CONTRIBUTING.md
 - रोडमैप: ROADMAP.md
 - आर्किटेक्चर और डिज़ाइन: architecture/README.hi.md
-- डेमो (Duet): docs/demos/README.en.md · Git मेलबॉक्स · PR रिव्यू
-  - Git मेलबॉक्स: docs/demos/git-mailbox/README.en.md
-  - PR रिव्यू डेमो: docs/demos/pr-review/README.en.md
-  - HTTP Inbox: docs/demos/http-inbox/README.en.md
-  - S3/MinIO मेलबॉक्स: docs/demos/s3-mailbox/README.en.md
-  - SQLite मेलबॉक्स: docs/demos/db-mailbox/README.en.md
-  - Redis मेलबॉक्स: docs/demos/redis-mailbox/README.en.md
-  - NATS मेलबॉक्स: docs/demos/nats-mailbox/README.en.md
-  - Slack मेलबॉक्स: docs/demos/slack-mailbox/README.en.md
+- डेमो (Duet): docs/demos/README.hi.md · Git मेलबॉक्स · PR रिव्यू
+  - Git मेलबॉक्स: docs/demos/git-mailbox/README.hi.md
+  - PR रिव्यू डेमो: docs/demos/pr-review/README.hi.md
+  - HTTP Inbox: docs/demos/http-inbox/README.hi.md
+  - S3/MinIO मेलबॉक्स: docs/demos/s3-mailbox/README.hi.md
+  - SQLite मेलबॉक्स: docs/demos/db-mailbox/README.hi.md
+  - Redis मेलबॉक्स: docs/demos/redis-mailbox/README.hi.md
+  - NATS मेलबॉक्स: docs/demos/nats-mailbox/README.hi.md
+  - Slack मेलबॉक्स: docs/demos/slack-mailbox/README.hi.md
 - Good First Issues: https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
 - Help Wanted: https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
 - Show & Tell: https://github.com/gnusec/codex-solo/discussions/9

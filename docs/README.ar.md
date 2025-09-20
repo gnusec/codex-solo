@@ -9,15 +9,15 @@
 - المساهمة: ../CONTRIBUTING.md
 - خارطة الطريق: ROADMAP.md
 - البنية والتصميم: architecture/README.ar.md
-- العروض التوضيحية (Duet): docs/demos/README.en.md · صندوق Git · مراجعة PR
-  - صندوق Git: docs/demos/git-mailbox/README.en.md
-  - مراجعة PR: docs/demos/pr-review/README.en.md
-  - HTTP Inbox: docs/demos/http-inbox/README.en.md
-  - صندوق S3/MinIO: docs/demos/s3-mailbox/README.en.md
-  - صندوق SQLite: docs/demos/db-mailbox/README.en.md
-  - صندوق Redis: docs/demos/redis-mailbox/README.en.md
-  - صندوق NATS: docs/demos/nats-mailbox/README.en.md
-  - صندوق Slack: docs/demos/slack-mailbox/README.en.md
+- العروض التوضيحية (Duet): docs/demos/README.ar.md · صندوق Git · مراجعة PR
+  - صندوق Git: docs/demos/git-mailbox/README.ar.md
+  - مراجعة PR: docs/demos/pr-review/README.ar.md
+  - HTTP Inbox: docs/demos/http-inbox/README.ar.md
+  - صندوق S3/MinIO: docs/demos/s3-mailbox/README.ar.md
+  - صندوق SQLite: docs/demos/db-mailbox/README.ar.md
+  - صندوق Redis: docs/demos/redis-mailbox/README.ar.md
+  - صندوق NATS: docs/demos/nats-mailbox/README.ar.md
+  - صندوق Slack: docs/demos/slack-mailbox/README.ar.md
 - Good First Issues: https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
 - Help Wanted: https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
 - Show & Tell: https://github.com/gnusec/codex-solo/discussions/9
