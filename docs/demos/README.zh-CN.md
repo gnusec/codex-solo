@@ -11,6 +11,21 @@
 - 可以把 B 换成其他 AI CLI（或给 Codex 配不同“人设”），只要遵守信箱协议：读取 `a_to_b.txt`，达标时创建 `done_by_b.flag`
 - 如果是两套 Codex（例：一个“实现者”、一个“严格评审者”），分别使用不同的初始提示/配置即可
 
+PR 驱动评审（状态 + 工件）
+- 参见：docs/demos/pr-checks/README.en.md
+
+Artifacts 信箱
+- 参见：docs/demos/artifacts-mailbox/README.en.md
+
+HTTP 收件箱
+- 参见：docs/demos/http-inbox/README.en.md
+
+S3/MinIO 信箱
+- 参见：docs/demos/s3-mailbox/README.en.md
+
+SQLite 信箱
+- 参见：docs/demos/db-mailbox/README.en.md
+
 文件信箱（可运行）
 目录：`samples/collab/file-mailbox`
 
@@ -40,3 +55,6 @@ cd samples/collab/file-mailbox
 Git 信箱（概念）
 - 使用两个分支 `duet/a` 与 `duet/b`；A 推送到 `duet/a` 写入状态，B 拉取后在 `duet/b` 回写评审状态
 - 也可用 CI 监听分支变更，驱动对应引擎；适合分布式/跨主机协作
+
+Git 信箱（工作流示例）
+- 参见：docs/demos/git-mailbox/README.en.md（可直接照做）

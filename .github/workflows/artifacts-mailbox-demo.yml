@@ -1,0 +1,30 @@
+name: Artifacts Mailbox Demo (B writes)
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: 'Reviewer note (to A)'
+        required: false
+        default: 'OK'
+
+permissions:
+  contents: read
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare mailbox files
+        run: |
+          set -euo pipefail
+          echo "${{ inputs.message }}" > b_to_a.txt
+          : > done_by_b.flag
+      - name: Upload mailbox as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mailbox-b
+          path: |
+            b_to_a.txt
+            done_by_b.flag
+

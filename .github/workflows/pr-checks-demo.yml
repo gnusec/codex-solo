@@ -1,0 +1,46 @@
+name: PR Checks Demo (status + artifact)
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run placeholder checks
+        id: run
+        run: |
+          set -euo pipefail
+          echo "All green at $(date -u +%FT%TZ)" > review-report.txt
+          echo "ok=1" >> $GITHUB_OUTPUT
+      - name: Upload artifact (report)
+        uses: actions/upload-artifact@v4
+        with:
+          name: review-report
+          path: review-report.txt
+      - name: Create check-run (success)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const sha = context.payload.pull_request.head.sha;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            await github.rest.checks.create({
+              owner, repo,
+              name: 'PR Checks Demo',
+              head_sha: sha,
+              status: 'completed',
+              conclusion: 'success',
+              output: {
+                title: 'Auto checks (demo)',
+                summary: 'Replace with real tests/lints or an AI reviewer. Artifact: review-report.txt'
+              }
+            });
+

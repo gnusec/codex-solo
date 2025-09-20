@@ -9,6 +9,15 @@
 - 贡献（Contribute）：../CONTRIBUTING.md
 - 路线图（Roadmap）：ROADMAP.md
 - 架构与设计：architecture/README.zh-CN.md
+- 协作演示（Duet）：docs/demos/README.zh-CN.md · Git 信箱 · PR 评审
+  - Git 信箱：docs/demos/git-mailbox/README.en.md
+  - PR 评审 Demo：docs/demos/pr-review/README.en.md
+  - HTTP 收件箱：docs/demos/http-inbox/README.en.md
+  - S3/MinIO 信箱：docs/demos/s3-mailbox/README.en.md
+  - SQLite 信箱：docs/demos/db-mailbox/README.en.md
+  - Redis 信箱：docs/demos/redis-mailbox/README.en.md
+  - NATS 信箱：docs/demos/nats-mailbox/README.en.md
+  - Slack 信箱：docs/demos/slack-mailbox/README.en.md
 - Good First Issues：https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
 - Help Wanted：https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
 - Show & Tell（演示与成果）：https://github.com/gnusec/codex-solo/discussions/9

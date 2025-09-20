@@ -1,0 +1,50 @@
+name: Duet Git Mailbox (Reviewer)
+
+on:
+  push:
+    branches:
+      - 'duet/a'
+
+permissions:
+  contents: write
+
+jobs:
+  reviewer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout duet/a
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Read A → B message (optional)
+        id: read
+        run: |
+          set -euo pipefail
+          MSG="(no message)"
+          if [ -f mailbox/a_to_b.txt ]; then
+            MSG=$(sed -e 's/\r$//' mailbox/a_to_b.txt | tail -n 40)
+          fi
+          echo "msg<<EOF" >> $GITHUB_OUTPUT
+          echo "$MSG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      - name: Prepare duet/b branch
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          # Create or switch to duet/b from current commit
+          if git ls-remote --exit-code --heads origin duet/b >/dev/null 2>&1; then
+            git switch -c duet/b || git checkout duet/b || true
+            git reset --soft origin/duet/b || true
+          else
+            git switch -c duet/b
+          fi
+          mkdir -p mailbox
+          printf '%s\n' "Reviewer OK at $(date -u +%Y-%m-%dT%H:%M:%SZ)" > mailbox/b_to_a.txt
+          printf '%s\n' "--- A to B (excerpt) ---" >> mailbox/b_to_a.txt
+          printf '%s\n' "${{ steps.read.outputs.msg }}" >> mailbox/b_to_a.txt
+          : > mailbox/done_by_b.flag
+          git add mailbox/b_to_a.txt mailbox/done_by_b.flag
+          git commit -m "duet: B reviewed; write done_by_b.flag"
+          git push -u origin HEAD:duet/b
+

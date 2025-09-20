@@ -15,6 +15,14 @@ Components (detailed)
 CI Sequence
 ![CI Sequence](../../assets/architecture-ci-seq.svg)
 
+Success Recipes Extensions
+![Recipes](../../assets/architecture-recipes.svg)
+
+Examples
+- JSONPath: `jq -e '.summary.passed==42' report.json >/dev/null`
+- HTTP: `curl -fsS http://localhost:8787/healthz >/dev/null`
+- Grep: `tool run | tee /tmp/out >/dev/null && grep -q 'All good' /tmp/out`
+
 Goals
 - Keep upstream drift minimal (vendor Codex; avoid intrusive changes)
 - Automate progress with a loop, not with guesswork

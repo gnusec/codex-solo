@@ -15,6 +15,14 @@
 CI 时序
 ![CI Sequence](../../assets/architecture-ci-seq.svg)
 
+成功配方扩展
+![Recipes](../../assets/architecture-recipes.svg)
+
+示例
+- JSONPath：`jq -e '.summary.passed==42' report.json >/dev/null`
+- HTTP：`curl -fsS http://localhost:8787/healthz >/dev/null`
+- Grep：`tool run | tee /tmp/out >/dev/null && grep -q 'All good' /tmp/out`
+
 目标
 - 尽量减少对上游的偏离（vendor 代码；避免侵入式修改）
 - 以循环自动推进，而不是靠人工猜测

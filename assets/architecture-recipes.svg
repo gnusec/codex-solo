@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420" role="img" aria-label="Success Recipes Extensions">
+  <defs>
+    <style>
+      .bg { fill: #0b0f14; }
+      .box { fill: #101a2a; stroke: #1f2b4d; stroke-width: 2; rx: 10; }
+      .title { font: 600 14px Inter, system-ui, -apple-system, Segoe UI, Roboto; fill: #c9d1d9; }
+      .mono { font: 12px SFMono-Regular,Consolas,Menlo,monospace; fill:#9fb0bf; }
+      .txt { font: 12px Inter, system-ui, -apple-system, Segoe UI, Roboto; fill:#9fb0bf; }
+      .link{ stroke:#3aa1ff; stroke-width:2; marker-end:url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L10,3 L0,6 z" fill="#3aa1ff" />
+    </marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="980" height="420"/>
+
+  <rect class="box" x="40" y="40" width="280" height="140"/>
+  <text class="title" x="60" y="68">Success Checker</text>
+  <text class="mono" x="60" y="96">done_token</text>
+  <text class="mono" x="60" y="118">success_cmd (exit 0)</text>
+  <text class="mono" x="60" y="140">success_sh  (exit 0)</text>
+
+  <rect class="box" x="360" y="30" width="260" height="90"/>
+  <text class="title" x="380" y="56">JSONPath Recipe</text>
+  <text class="txt" x="380" y="80">Parse JSON and assert path/value</text>
+
+  <rect class="box" x="360" y="135" width="260" height="90"/>
+  <text class="title" x="380" y="161">HTTP Recipe</text>
+  <text class="txt" x="380" y="185">Call endpoint, assert status/body</text>
+
+  <rect class="box" x="360" y="240" width="260" height="90"/>
+  <text class="title" x="380" y="266">Report Grep Recipe</text>
+  <text class="txt" x="380" y="290">Run tool, grep exact success line</text>
+
+  <rect class="box" x="650" y="135" width="280" height="120"/>
+  <text class="title" x="670" y="163">Shell Adapter</text>
+  <text class="txt" x="670" y="187">Each recipe composes into a shell snippet</text>
+  <text class="mono" x="670" y="209">exit 0 → success · else keep iterating</text>
+
+  <path class="link" d="M320,90 L360,90"/>
+  <path class="link" d="M320,130 L360,170"/>
+  <path class="link" d="M320,170 L360,270"/>
+  <path class="link" d="M620,170 L650,170"/>
+  <path class="link" d="M620,220 L650,220"/>
+  <path class="link" d="M620,265 L650,230"/>
+</svg>

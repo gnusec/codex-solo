@@ -15,6 +15,14 @@ Componentes (detallado)
 Secuencia CI
 ![Secuencia CI](../../assets/architecture-ci-seq.svg)
 
+Recetas de éxito (extensiones)
+![Recetas](../../assets/architecture-recipes.svg)
+
+Ejemplos
+- JSONPath: `jq -e '.summary.passed==42' report.json >/dev/null`
+- HTTP: `curl -fsS http://localhost:8787/healthz >/dev/null`
+- Grep: `tool run | tee /tmp/out >/dev/null && grep -q 'All good' /tmp/out`
+
 Objetivos
 - Mantener al mínimo la desviación respecto a upstream (vendor de Codex; evitar cambios intrusivos)
 - Automatizar el avance con un bucle (no con adivinanzas)

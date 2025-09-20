@@ -9,6 +9,15 @@ Quick links
 - Contribute: ../CONTRIBUTING.md
 - Roadmap: ROADMAP.md
 - Architecture & Design: architecture/README.en.md
+- Demos (Duet): docs/demos/README.en.md · Git Mailbox · PR Review
+  - Git Mailbox: docs/demos/git-mailbox/README.en.md
+  - PR Review Demo: docs/demos/pr-review/README.en.md
+  - HTTP Inbox: docs/demos/http-inbox/README.en.md
+  - S3/MinIO Mailbox: docs/demos/s3-mailbox/README.en.md
+  - SQLite Mailbox: docs/demos/db-mailbox/README.en.md
+  - Redis Mailbox: docs/demos/redis-mailbox/README.en.md
+  - NATS Mailbox: docs/demos/nats-mailbox/README.en.md
+  - Slack Mailbox: docs/demos/slack-mailbox/README.en.md
 - Good First Issues: https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
 - Help Wanted: https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
 - Show & Tell: https://github.com/gnusec/codex-solo/discussions/9

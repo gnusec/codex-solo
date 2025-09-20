@@ -15,6 +15,14 @@
 CI अनुक्रम
 ![CI Sequence](../../assets/architecture-ci-seq.svg)
 
+Success Recipes (विस्तार)
+![Recipes](../../assets/architecture-recipes.svg)
+
+उदाहरण
+- JSONPath: `jq -e '.summary.passed==42' report.json >/dev/null`
+- HTTP: `curl -fsS http://localhost:8787/healthz >/dev/null`
+- Grep: `tool run | tee /tmp/out >/dev/null && grep -q 'All good' /tmp/out`
+
 लक्ष्य
 - अपस्ट्रीम से न्यूनतम डिफ (vendor; घुसपैठ वाले बदलाव नहीं)
 - अनुमान के बजाय लूप के साथ स्वचालित प्रगति

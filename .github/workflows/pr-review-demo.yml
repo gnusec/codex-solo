@@ -1,0 +1,43 @@
+name: PR Review Demo (B engine)
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run simple checks (placeholder)
+        id: checks
+        run: |
+          set -euo pipefail
+          echo "ok=1" >> $GITHUB_OUTPUT
+      - name: Post PR review comment
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          PR=${{ github.event.pull_request.number }}
+          OWNER=${{ github.repository_owner }}
+          REPO=$(echo "${{ github.repository }}" | cut -d/ -f2)
+          BODY=$(cat <<'EOF'
+          🤖 Auto-review (demo)
+
+          - Engine B ran a placeholder check.
+          - Replace this step with real tests/lints or an AI CLI.
+
+          Tip: For a branch-based duet, see `duet-git-mailbox.yml`.
+          EOF
+          )
+          curl -sS -X POST \
+            -H "Authorization: token $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -d "$(jq -Rn --arg body "$BODY" '{body:$body}')" \
+            "https://api.github.com/repos/$OWNER/$REPO/issues/$PR/comments" >/dev/null
+

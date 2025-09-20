@@ -1,0 +1,9 @@
+{
+  "done_token": "",
+  "kickoff_prompt": "你是A（Builder）。在本项目中补全实现（可先建一个最小示例模块），每推进一小步在 mailbox/a_to_b.txt 记录一句要点。当你认为已满足目标时，创建文件 mailbox/done_by_a.flag 并简述当前状态；随后等待B评审。注意：不要擅自创建 mailbox/done_by_b.flag，那是B完成时才写。",
+  "continue_prompt": "继续推进实现；如已完成则等待B评审。",
+  "success_sh": "test -f mailbox/done_by_b.flag",
+  "interval_seconds": 20,
+  "exit_on_success": true
+}
+

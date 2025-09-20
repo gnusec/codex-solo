@@ -15,6 +15,14 @@
 تسلسل CI
 ![CI Sequence](../../assets/architecture-ci-seq.svg)
 
+وصفات النجاح (امتدادات)
+![Recipes](../../assets/architecture-recipes.svg)
+
+أمثلة
+- JSONPath: `jq -e '.summary.passed==42' report.json >/dev/null`
+- HTTP: `curl -fsS http://localhost:8787/healthz >/dev/null`
+- Grep: `tool run | tee /tmp/out >/dev/null && grep -q 'All good' /tmp/out`
+
 الأهداف
 - تقليل الانحراف عن المصدر الأصلي قدر الإمكان (vendor؛ تجنب التغييرات المتطفلة)
 - أتمتة التقدّم بحلقة تلقائية بدل التخمين اليدوي

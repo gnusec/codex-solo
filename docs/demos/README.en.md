@@ -40,3 +40,30 @@ Use another AI CLI?
 Git Mailbox (concept)
 - Two branches `duet/a` and `duet/b`; A pushes to `duet/a` with a status file, B reads it and pushes to `duet/b` with its status
 - A CI can watch pushes and feed the counterpart engine; this pattern scales across remote runners
+
+Git Mailbox (workflow demo)
+- See: docs/demos/git-mailbox/README.en.md
+
+PR‑driven Review (checks + artifacts)
+- See: docs/demos/pr-checks/README.en.md
+
+Artifacts Mailbox
+- See: docs/demos/artifacts-mailbox/README.en.md
+
+HTTP Inbox
+- See: docs/demos/http-inbox/README.en.md
+
+S3/MinIO Mailbox
+- See: docs/demos/s3-mailbox/README.en.md
+
+SQLite Mailbox
+- See: docs/demos/db-mailbox/README.en.md
+
+Redis Mailbox
+- See: docs/demos/redis-mailbox/README.en.md
+
+NATS Mailbox
+- See: docs/demos/nats-mailbox/README.en.md
+
+Slack Mailbox
+- See: docs/demos/slack-mailbox/README.en.md

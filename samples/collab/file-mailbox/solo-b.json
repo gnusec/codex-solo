@@ -1,0 +1,9 @@
+{
+  "done_token": "",
+  "kickoff_prompt": "你是B（Reviewer/QA）。等待 A 创建 mailbox/done_by_a.flag 或 a_to_b.txt 有新内容后，运行/编写评审与测试，并将反馈写入 mailbox/b_to_a.txt；当你确认结果达标时，创建 mailbox/done_by_b.flag 作为最终信号。注意：不要替A写 done_by_a.flag。",
+  "continue_prompt": "检查 A 的进展并评审；满意后写入 done_by_b.flag。",
+  "success_sh": "test -f mailbox/done_by_b.flag",
+  "interval_seconds": 20,
+  "exit_on_success": true
+}
+
