@@ -103,3 +103,11 @@ Run
 cd vendor/codex/codex-rs && cargo build -p codex-cli --release
 ./vendor/codex/codex-rs/target/release/codex  # then type /solo or use autostart
 ```
+More Scenarios (Duet / Advanced)
+- File Mailbox (A/B, runnable): docs/demos/README.en.md
+- Git Mailbox (branches as mailbox): docs/demos/git-mailbox/README.en.md
+- PR Review / Checks + Artifacts: docs/demos/pr-review/README.en.md · docs/demos/pr-checks/README.en.md
+- HTTP Inbox: docs/demos/http-inbox/README.en.md
+- S3/MinIO Mailbox: docs/demos/s3-mailbox/README.en.md
+- SQLite Mailbox: docs/demos/db-mailbox/README.en.md
+- Redis / NATS / Slack Mailbox: docs/demos/redis-mailbox/README.en.md · docs/demos/nats-mailbox/README.en.md · docs/demos/slack-mailbox/README.en.md

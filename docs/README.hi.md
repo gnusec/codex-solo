@@ -99,3 +99,11 @@ bash scripts/build-static.sh
 cd vendor/codex/codex-rs && cargo build -p codex-cli --release
 ./vendor/codex/codex-rs/target/release/codex   # /solo टाइप करें या ऑटोस्टार्ट करें
 ```
+और परिदृश्य (Duet / उन्नत)
+- फ़ाइल मेलबॉक्स (A/B): docs/demos/README.en.md
+- Git मेलबॉक्स (ब्रांच): docs/demos/git-mailbox/README.en.md
+- PR रिव्यू / Checks + आर्टिफैक्ट्स: docs/demos/pr-review/README.en.md · docs/demos/pr-checks/README.en.md
+- HTTP Inbox: docs/demos/http-inbox/README.en.md
+- S3/MinIO मेलबॉक्स: docs/demos/s3-mailbox/README.en.md
+- SQLite मेलबॉक्स: docs/demos/db-mailbox/README.en.md
+- Redis / NATS / Slack मेलबॉक्स: docs/demos/redis-mailbox/README.en.md · docs/demos/nats-mailbox/README.en.md · docs/demos/slack-mailbox/README.en.md

@@ -99,3 +99,11 @@ bash scripts/build-static.sh
 cd vendor/codex/codex-rs && cargo build -p codex-cli --release
 ./vendor/codex/codex-rs/target/release/codex   # اكتب /solo أو استخدم التشغيل التلقائي
 ```
+سيناريوهات إضافية (Duet / متقدم)
+- صندوق الملفات (A/B): docs/demos/README.en.md
+- صندوق Git (الفروع كصندوق): docs/demos/git-mailbox/README.en.md
+- مراجعة PR / Checks + Artifacts: docs/demos/pr-review/README.en.md · docs/demos/pr-checks/README.en.md
+- HTTP Inbox: docs/demos/http-inbox/README.en.md
+- صندوق S3/MinIO: docs/demos/s3-mailbox/README.en.md
+- صندوق SQLite: docs/demos/db-mailbox/README.en.md
+- Redis / NATS / Slack: docs/demos/redis-mailbox/README.en.md · docs/demos/nats-mailbox/README.en.md · docs/demos/slack-mailbox/README.en.md
