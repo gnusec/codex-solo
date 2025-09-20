@@ -9,6 +9,12 @@
 सीक्वेंस (Sequence)
 ![Sequence](../../assets/architecture-seq.svg)
 
+घटक (विस्तृत)
+![Components](../../assets/architecture-components.svg)
+
+CI अनुक्रम
+![CI Sequence](../../assets/architecture-ci-seq.svg)
+
 लक्ष्य
 - अपस्ट्रीम से न्यूनतम डिफ (vendor; घुसपैठ वाले बदलाव नहीं)
 - अनुमान के बजाय लूप के साथ स्वचालित प्रगति

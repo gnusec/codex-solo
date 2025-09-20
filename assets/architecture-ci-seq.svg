@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="540" viewBox="0 0 980 540" role="img" aria-label="Codex SOLO CI Sequence">
+  <defs>
+    <style>
+      .bg { fill: #0b0f14; }
+      .lane { fill: #0f1526; stroke: #1f2b4d; stroke-width: 2; }
+      .title { font: 600 14px Inter, system-ui, -apple-system, Segoe UI, Roboto; fill: #a8b3c7; }
+      .step { fill: #111a33; stroke: #1f2b4d; stroke-width: 2; rx: 8; }
+      .txt { font: 12px Inter, system-ui, -apple-system, Segoe UI, Roboto; fill: #c9d1d9; }
+      .mono{ font: 12px SFMono-Regular,Consolas,Menlo,monospace; fill:#9fb0bf; }
+      .arrow{ stroke:#3aa1ff; stroke-width:2; marker-end:url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L10,3 L0,6 z" fill="#3aa1ff" />
+    </marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="980" height="540"/>
+
+  <!-- Swimlanes -->
+  <rect class="lane" x="40" y="40" width="220" height="460"/>
+  <text class="title" x="60" y="60">GitHub Actions Runner</text>
+  <rect class="lane" x="280" y="40" width="200" height="460"/>
+  <text class="title" x="300" y="60">codex (binary)</text>
+  <rect class="lane" x="500" y="40" width="200" height="460"/>
+  <text class="title" x="520" y="60">SOLO Controller</text>
+  <rect class="lane" x="720" y="40" width="220" height="460"/>
+  <text class="title" x="740" y="60">Success Checker / Project</text>
+
+  <!-- Steps -->
+  <rect class="step" x="60" y="90" width="180" height="52"/>
+  <text class="txt" x="70" y="115">download codex</text>
+  <text class="mono" x="70" y="132">curl -L …/codex</text>
+
+  <rect class="step" x="60" y="160" width="180" height="64"/>
+  <text class="txt" x="70" y="185">write .codex-solo.json</text>
+  <text class="mono" x="70" y="202">success_cmd / success_sh</text>
+
+  <rect class="step" x="300" y="240" width="160" height="52"/>
+  <text class="txt" x="310" y="265">script -q -e -c ./codex</text>
+
+  <rect class="step" x="520" y="320" width="160" height="64"/>
+  <text class="txt" x="530" y="345">continue loop</text>
+  <text class="mono" x="530" y="362">interval_seconds</text>
+
+  <rect class="step" x="740" y="400" width="180" height="64"/>
+  <text class="txt" x="750" y="425">run checks</text>
+  <text class="mono" x="750" y="442">tests/files/output → exit 0</text>
+
+  <!-- Arrows -->
+  <path class="arrow" d="M240,116 L280,116"/>
+  <path class="arrow" d="M240,192 L300,192 L300,240"/>
+  <path class="arrow" d="M460,266 L500,266"/>
+  <path class="arrow" d="M460,346 L520,346"/>
+  <path class="arrow" d="M680,352 L720,352"/>
+  <path class="arrow" d="M820,400 L820,320"/>
+  <path class="arrow" d="M520,384 L460,384 L460,440 L300,440"/>
+
+  <text class="mono" x="60" y="500">keep logs short; precise checks</text>
+</svg>

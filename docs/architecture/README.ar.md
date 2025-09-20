@@ -9,6 +9,12 @@
 مخطط التسلسل
 ![Sequence](../../assets/architecture-seq.svg)
 
+المكوّنات (تفصيلي)
+![Components](../../assets/architecture-components.svg)
+
+تسلسل CI
+![CI Sequence](../../assets/architecture-ci-seq.svg)
+
 الأهداف
 - تقليل الانحراف عن المصدر الأصلي قدر الإمكان (vendor؛ تجنب التغييرات المتطفلة)
 - أتمتة التقدّم بحلقة تلقائية بدل التخمين اليدوي

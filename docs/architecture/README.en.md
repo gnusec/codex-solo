@@ -9,6 +9,12 @@ Diagram
 Sequence
 ![Sequence](../../assets/architecture-seq.svg)
 
+Components (detailed)
+![Components](../../assets/architecture-components.svg)
+
+CI Sequence
+![CI Sequence](../../assets/architecture-ci-seq.svg)
+
 Goals
 - Keep upstream drift minimal (vendor Codex; avoid intrusive changes)
 - Automate progress with a loop, not with guesswork

@@ -9,6 +9,12 @@ Diagrama
 Secuencia
 ![Secuencia](../../assets/architecture-seq.svg)
 
+Componentes (detallado)
+![Componentes](../../assets/architecture-components.svg)
+
+Secuencia CI
+![Secuencia CI](../../assets/architecture-ci-seq.svg)
+
 Objetivos
 - Mantener al mínimo la desviación respecto a upstream (vendor de Codex; evitar cambios intrusivos)
 - Automatizar el avance con un bucle (no con adivinanzas)

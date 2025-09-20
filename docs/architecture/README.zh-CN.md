@@ -9,6 +9,12 @@
 时序图
 ![Sequence](../../assets/architecture-seq.svg)
 
+组件（详细）
+![Components](../../assets/architecture-components.svg)
+
+CI 时序
+![CI Sequence](../../assets/architecture-ci-seq.svg)
+
 目标
 - 尽量减少对上游的偏离（vendor 代码；避免侵入式修改）
 - 以循环自动推进，而不是靠人工猜测
