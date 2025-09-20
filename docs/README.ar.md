@@ -3,6 +3,15 @@
 
 # وضع SOLO في Codex — دليل سريع
 
+روابط سريعة
+- الإصدارات: https://github.com/gnusec/codex-solo/releases
+- المناقشات: https://github.com/gnusec/codex-solo/discussions
+- المساهمة: ../CONTRIBUTING.md
+- خارطة الطريق: ROADMAP.md
+- Good First Issues: https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
+- Help Wanted: https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
+- Show & Tell: https://github.com/gnusec/codex-solo/discussions/9
+
 نظرة وظيفية
 - يستمر تلقائيًا حتى تمرّ فحوصات النجاح
 - فحوصات قابلة للبرمجة: خروج 0 للأوامر/السكربت، نجاح الاختبارات، مطابقة ملف/مخرجات

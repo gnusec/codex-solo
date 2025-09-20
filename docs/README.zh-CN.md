@@ -3,6 +3,15 @@
 
 # Codex SOLO 模式 — 快速上手
 
+快速入口
+- 发布下载（最新）：https://github.com/gnusec/codex-solo/releases
+- 入群 / Discussions：https://github.com/gnusec/codex-solo/discussions
+- 贡献（Contribute）：../CONTRIBUTING.md
+- 路线图（Roadmap）：ROADMAP.md
+- Good First Issues：https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
+- Help Wanted：https://github.com/gnusec/codex-solo/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
+- Show & Tell（演示与成果）：https://github.com/gnusec/codex-solo/discussions/9
+
 功能概述
 - 自动连续推进直到“成功检查”通过
 - 成功检查可脚本化：命令/脚本退出码 0、测试全绿、文件/输出匹配
