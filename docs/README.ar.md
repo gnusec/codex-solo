@@ -38,3 +38,49 @@
 المزيد
 - الدليل المتقدم: SOLO.ar.md
 - English: README.en.md ؛ 中文: README.zh-CN.md
+
+أمثلة
+1) موضوع + علامة نهاية
+```json
+{
+  "kickoff_prompt": "أنشئ CLI يقرأ CSV ويطبع JSON. أخيرًا اطبع [SOLO_DONE]",
+  "done_token": "[SOLO_DONE]",
+  "continue_prompt": "استمر"
+}
+```
+
+2) موضوع + تحقق بالأمر
+```json
+{
+  "kickoff_prompt": "أكمل التنفيذ واجعل الاختبارات تنجح",
+  "success_cmd": ["pytest", "-q"],
+  "continue_prompt": "استمر (حتى تمر الاختبارات)"
+}
+```
+
+3) موضوع + تحقق عبر shell
+```json
+{
+  "kickoff_prompt": "تأكد أن التقرير يظهر 42 passed",
+  "success_sh": "pytest -q | tee /tmp/pytest.out >/dev/null && grep -q '42 passed' /tmp/pytest.out",
+  "continue_prompt": "استمر (حتى يظهر 42 passed)",
+  "exit_on_success": true
+}
+```
+
+تشغيل تلقائي
+```bash
+CODEX_SOLO_AUTOSTART=1 ./codex
+```
+
+البناء (Linux musl)
+```bash
+rustup target add x86_64-unknown-linux-musl aarch64-unknown-linux-musl
+bash scripts/build-static.sh
+```
+
+تشغيل
+```bash
+cd vendor/codex/codex-rs && cargo build -p codex-cli --release
+./vendor/codex/codex-rs/target/release/codex   # اكتب /solo أو استخدم التشغيل التلقائي
+```

@@ -38,3 +38,49 @@ Multi‑instancia (A/B)
 Más
 - Guía avanzada: SOLO.es.md
 - English: README.en.md; 中文: README.zh-CN.md
+
+Ejemplos
+1) Tema + token de finalización
+```json
+{
+  "kickoff_prompt": "Construye un CLI que lea CSV y devuelva JSON. Finalmente imprime [SOLO_DONE]",
+  "done_token": "[SOLO_DONE]",
+  "continue_prompt": "continuar"
+}
+```
+
+2) Tema + verificación por comando
+```json
+{
+  "kickoff_prompt": "Completa la implementación y haz que pasen las pruebas",
+  "success_cmd": ["pytest", "-q"],
+  "continue_prompt": "continuar (iterar hasta pasar)"
+}
+```
+
+3) Tema + verificación por shell
+```json
+{
+  "kickoff_prompt": "Asegura que el reporte muestre 42 passed",
+  "success_sh": "pytest -q | tee /tmp/pytest.out >/dev/null && grep -q '42 passed' /tmp/pytest.out",
+  "continue_prompt": "continuar (hasta ver 42 passed)",
+  "exit_on_success": true
+}
+```
+
+Autoinicio
+```bash
+CODEX_SOLO_AUTOSTART=1 ./codex
+```
+
+Compilar (Linux musl)
+```bash
+rustup target add x86_64-unknown-linux-musl aarch64-unknown-linux-musl
+bash scripts/build-static.sh
+```
+
+Ejecutar
+```bash
+cd vendor/codex/codex-rs && cargo build -p codex-cli --release
+./vendor/codex/codex-rs/target/release/codex   # escribe /solo o usa autoinicio
+```

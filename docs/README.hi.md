@@ -38,3 +38,49 @@
 अधिक जानकारी
 - उन्नत मार्गदर्शिका: SOLO.hi.md
 - English: README.en.md; 中文: README.zh-CN.md
+
+उदाहरण
+1) विषय + समाप्ति चिन्ह
+```json
+{
+  "kickoff_prompt": "CSV पढ़कर JSON प्रिंट करने वाला CLI बनाएं। अंत में [SOLO_DONE] प्रिंट करें",
+  "done_token": "[SOLO_DONE]",
+  "continue_prompt": "जारी रखें"
+}
+```
+
+2) विषय + कमांड से जाँच
+```json
+{
+  "kickoff_prompt": "इम्प्लीमेंटेशन पूरा करें और टेस्ट पास कराएं",
+  "success_cmd": ["pytest", "-q"],
+  "continue_prompt": "जारी रखें (जब तक टेस्ट पास न हों)"
+}
+```
+
+3) विषय + shell से जाँच
+```json
+{
+  "kickoff_prompt": "रिपोर्ट में 42 passed दिखना सुनिश्चित करें",
+  "success_sh": "pytest -q | tee /tmp/pytest.out >/dev/null && grep -q '42 passed' /tmp/pytest.out",
+  "continue_prompt": "जारी रखें (जब तक 42 passed न दिखे)",
+  "exit_on_success": true
+}
+```
+
+ऑटोस्टार्ट
+```bash
+CODEX_SOLO_AUTOSTART=1 ./codex
+```
+
+बिल्ड (Linux musl)
+```bash
+rustup target add x86_64-unknown-linux-musl aarch64-unknown-linux-musl
+bash scripts/build-static.sh
+```
+
+रन
+```bash
+cd vendor/codex/codex-rs && cargo build -p codex-cli --release
+./vendor/codex/codex-rs/target/release/codex   # /solo टाइप करें या ऑटोस्टार्ट करें
+```

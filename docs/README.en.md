@@ -33,41 +33,58 @@ Configure with `.codex-solo.json` (or override via `CODEX_SOLO_CONFIG`)
 
 Examples
 1) Topic only; agent self‑judges with done token
+```json
 {
   "kickoff_prompt": "Build a CLI that reads CSV and prints JSON. Finally print [SOLO_DONE]",
   "done_token": "[SOLO_DONE]",
   "continue_prompt": "continue"
 }
+```
 
 2) Topic + explicit check (command)
+```json
 {
   "kickoff_prompt": "Finish implementation and make tests pass",
   "success_cmd": ["pytest", "-q"],
- "continue_prompt": "continue (iterate until tests pass)"
+  "continue_prompt": "continue (iterate until tests pass)"
 }
+```
 
 3) Topic + explicit check (shell)
+```json
 {
- "kickoff_prompt": "Ensure the report shows 42 passed",
- "success_sh": "pytest -q | tee /tmp/pytest.out >/dev/null && grep -q '42 passed' /tmp/pytest.out",
+  "kickoff_prompt": "Ensure the report shows 42 passed",
+  "success_sh": "pytest -q | tee /tmp/pytest.out >/dev/null && grep -q '42 passed' /tmp/pytest.out",
   "continue_prompt": "continue (until report exactly shows 42 passed)",
   "exit_on_success": true
 }
+```
 
 Autostart SOLO
-- Env: `CODEX_SOLO_AUTOSTART=1 ./codex`
+- Env:
+```bash
+CODEX_SOLO_AUTOSTART=1 ./codex
+```
 - File: add `"autostart": true` to `.codex-solo.json` (env takes priority)
 - Optional exit on success: set `CODEX_SOLO_EXIT_ON_SUCCESS=1` (or add `exit_on_success: true` to `.codex-solo.json`)
 - Optional config override: `CODEX_SOLO_CONFIG=/path/to/solo.json` (relative to cwd if not absolute)
  - Optional interval: `CODEX_SOLO_INTERVAL_SECONDS=60` (or add `interval_seconds: 60` to `.codex-solo.json`)
 
 Build (Linux static musl)
-- Prereqs: `rustup target add x86_64-unknown-linux-musl aarch64-unknown-linux-musl`
-- Run: `bash scripts/build-static.sh`
+- Prereqs:
+```bash
+rustup target add x86_64-unknown-linux-musl aarch64-unknown-linux-musl
+```
+- Run:
+```bash
+bash scripts/build-static.sh
+```
 
 Deep Dive
 - See: SOLO.en.md
 
 Run
-- `cd vendor/codex/codex-rs && cargo build -p codex-cli --release`
-- `./vendor/codex/codex-rs/target/release/codex` and type `/solo` or use autostart.
+```bash
+cd vendor/codex/codex-rs && cargo build -p codex-cli --release
+./vendor/codex/codex-rs/target/release/codex  # then type /solo or use autostart
+```

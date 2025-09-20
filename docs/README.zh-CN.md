@@ -33,41 +33,58 @@
 
 示例
 1）只给主题，由模型自行判断完成（通过标记）
+```json
 {
   "kickoff_prompt": "实现一个 CLI，读取 CSV 输出 JSON。最后请打印 [SOLO_DONE]",
   "done_token": "[SOLO_DONE]",
   "continue_prompt": "继续"
 }
+```
 
 2）主题 + 明确成功校验（命令）
+```json
 {
   "kickoff_prompt": "补全实现并让测试通过",
   "success_cmd": ["pytest", "-q"],
   "continue_prompt": "继续（迭代直到测试通过）"
 }
+```
 
 3）主题 + 明确成功校验（Shell）
+```json
 {
   "kickoff_prompt": "实现并确保测试报告显示 42 passed",
   "success_sh": "pytest -q | tee /tmp/pytest.out >/dev/null && grep -q '42 passed' /tmp/pytest.out",
   "continue_prompt": "继续（直到报告精确显示 42 passed）",
   "exit_on_success": true
 }
+```
 
 开机自启 SOLO
-- 环境变量：`CODEX_SOLO_AUTOSTART=1 ./codex`
+- 环境变量：
+```bash
+CODEX_SOLO_AUTOSTART=1 ./codex
+```
 - 配置文件：在 `.codex-solo.json` 中加入 `"autostart": true`（若同时存在，环境变量优先生效）
 - 可选：成功后退出，设置 `CODEX_SOLO_EXIT_ON_SUCCESS=1`（或在 `.codex-solo.json` 中加入 `exit_on_success: true`）
 - 可选：指定配置文件路径，设置 `CODEX_SOLO_CONFIG=/path/to/solo.json`（相对路径相对于工作目录解析）
  - 可选：设置轮询间隔，`CODEX_SOLO_INTERVAL_SECONDS=60`（或在 `.codex-solo.json` 中加入 `interval_seconds: 60`）
 
 构建（Linux 静态 musl）
-- 先安装目标：`rustup target add x86_64-unknown-linux-musl aarch64-unknown-linux-musl`
-- 执行：`bash scripts/build-static.sh`
+- 先安装目标：
+```bash
+rustup target add x86_64-unknown-linux-musl aarch64-unknown-linux-musl
+```
+- 执行：
+```bash
+bash scripts/build-static.sh
+```
 
 深入原理
 - 详见：SOLO.zh-CN.md
 
 运行
-- `cd vendor/codex/codex-rs && cargo build -p codex-cli --release`
-- 运行 `./vendor/codex/codex-rs/target/release/codex`，在聊天中输入 `/solo` 或使用自启。
+```bash
+cd vendor/codex/codex-rs && cargo build -p codex-cli --release
+./vendor/codex/codex-rs/target/release/codex   # 聊天中输入 /solo 或使用自启
+```
