@@ -129,12 +129,12 @@
 
 更多协作 / 高级场景
 - 文件信箱（A/B 协作，可运行）：[docs/demos/README.zh-CN.md](docs/demos/README.zh-CN.md)
-- Git 信箱（分支作为信箱，工作流示例）：[docs/demos/git-mailbox/README.en.md](docs/demos/git-mailbox/README.en.md)
-- PR 评审 / Checks + 工件：[docs/demos/pr-review/README.en.md](docs/demos/pr-review/README.en.md) · [docs/demos/pr-checks/README.en.md](docs/demos/pr-checks/README.en.md)
-- HTTP 收件箱（本地 Webhook）：[docs/demos/http-inbox/README.en.md](docs/demos/http-inbox/README.en.md)
-- S3/MinIO 信箱：[docs/demos/s3-mailbox/README.en.md](docs/demos/s3-mailbox/README.en.md)
-- SQLite 信箱：[docs/demos/db-mailbox/README.en.md](docs/demos/db-mailbox/README.en.md)
-- Redis/NATS/Slack 信箱：[docs/demos/redis-mailbox/README.en.md](docs/demos/redis-mailbox/README.en.md) · [docs/demos/nats-mailbox/README.en.md](docs/demos/nats-mailbox/README.en.md) · [docs/demos/slack-mailbox/README.en.md](docs/demos/slack-mailbox/README.en.md)
+- Git 信箱（分支作为信箱，工作流示例）：[docs/demos/git-mailbox/README.zh-CN.md](docs/demos/git-mailbox/README.zh-CN.md)
+- PR 评审 / Checks + 工件：[docs/demos/pr-review/README.zh-CN.md](docs/demos/pr-review/README.zh-CN.md) · [docs/demos/pr-checks/README.zh-CN.md](docs/demos/pr-checks/README.zh-CN.md)
+- HTTP 收件箱（本地 Webhook）：[docs/demos/http-inbox/README.zh-CN.md](docs/demos/http-inbox/README.zh-CN.md)
+- S3/MinIO 信箱：[docs/demos/s3-mailbox/README.zh-CN.md](docs/demos/s3-mailbox/README.zh-CN.md)
+- SQLite 信箱：[docs/demos/db-mailbox/README.zh-CN.md](docs/demos/db-mailbox/README.zh-CN.md)
+- Redis/NATS/Slack 信箱：[docs/demos/redis-mailbox/README.zh-CN.md](docs/demos/redis-mailbox/README.zh-CN.md) · [docs/demos/nats-mailbox/README.zh-CN.md](docs/demos/nats-mailbox/README.zh-CN.md) · [docs/demos/slack-mailbox/README.zh-CN.md](docs/demos/slack-mailbox/README.zh-CN.md)
 
 
 ## License
