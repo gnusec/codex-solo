@@ -85,7 +85,7 @@ jobs:
           (cd dist && sha256sum "$NAME" >> SHA256SUMS.txt)
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: linux-${{ matrix.target }}
           path: |
@@ -123,7 +123,7 @@ jobs:
           cp "$BIN" "dist/$NAME"
           (cd dist && shasum -a 256 "$NAME" >> SHA256SUMS.txt)
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: macos-${{ matrix.target }}
           path: |
@@ -154,7 +154,7 @@ jobs:
           cp "$BIN" "dist/$NAME"
           (cd dist && sha256sum "$NAME" >> SHA256SUMS.txt)
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: windows-x86_64
           path: |
