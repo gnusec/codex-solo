@@ -47,7 +47,7 @@ jobs:
         run: cargo build -p codex-cli --release --target x86_64-unknown-linux-musl
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: codex-x86_64-unknown-linux-musl
           path: vendor/codex/codex-rs/target/x86_64-unknown-linux-musl/release/codex
